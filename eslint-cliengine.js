@@ -2,7 +2,7 @@ var baseOutputDir = './app/test/reports/eslint/';
 var fileName = 'eslint-report';
 var formatters = [
 	{ format:'html', fileExt:'.html'},
-	{ format:'junit', fileExt:'.xml'}
+	{ format:'checkstyle', fileExt:'.xml'}
 ]
 
 var fs = require('fs');
