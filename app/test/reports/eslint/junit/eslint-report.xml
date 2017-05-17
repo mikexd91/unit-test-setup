@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+<testsuite package="org.eslint" time="0" tests="7" errors="7" name="C:\Users\jang01\Desktop\Internship\testings\eslint-karma-webpack\app\src\actions\add.js">
+<testcase time="0" name="org.eslint.func-names"><failure message="Unexpected unnamed function."><![CDATA[line 1, col 18, Warning - Unexpected unnamed function. (func-names)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 1, col 35, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-tabs"><failure message="Unexpected tab character."><![CDATA[line 2, col 2, Error - Unexpected tab character. (no-tabs)]]></failure></testcase>
+<testcase time="0" name="org.eslint.indent"><failure message="Expected indentation of 2 spaces but found 1 tab."><![CDATA[line 2, col 2, Error - Expected indentation of 2 spaces but found 1 tab. (indent)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 2, col 15, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.eol-last"><failure message="Newline required at end of file but not found."><![CDATA[line 3, col 2, Error - Newline required at end of file but not found. (eol-last)]]></failure></testcase>
+<testcase time="0" name="org.eslint.semi"><failure message="Missing semicolon."><![CDATA[line 3, col 2, Error - Missing semicolon. (semi)]]></failure></testcase>
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="32" errors="32" name="C:\Users\jang01\Desktop\Internship\testings\eslint-karma-webpack\app\src\components\MyButton.js">
+<testcase time="0" name="org.eslint.space-before-function-paren"><failure message="Unexpected space before function parentheses."><![CDATA[line 1, col 18, Error - Unexpected space before function parentheses. (space-before-function-paren)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 1, col 25, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.indent"><failure message="Expected indentation of 2 spaces but found 1 tab."><![CDATA[line 2, col 2, Error - Expected indentation of 2 spaces but found 1 tab. (indent)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-tabs"><failure message="Unexpected tab character."><![CDATA[line 2, col 2, Error - Unexpected tab character. (no-tabs)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 2, col 15, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.indent"><failure message="Expected indentation of 2 spaces but found 1 tab."><![CDATA[line 3, col 2, Error - Expected indentation of 2 spaces but found 1 tab. (indent)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-tabs"><failure message="Unexpected tab character."><![CDATA[line 3, col 2, Error - Unexpected tab character. (no-tabs)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-var"><failure message="Unexpected var, use let or const instead."><![CDATA[line 3, col 2, Error - Unexpected var, use let or const instead. (no-var)]]></failure></testcase>
+<testcase time="0" name="org.eslint.vars-on-top"><failure message="All &apos;var&apos; declarations must be at the top of the function scope."><![CDATA[line 3, col 2, Error - All &apos;var&apos; declarations must be at the top of the function scope. (vars-on-top)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-undef"><failure message="&apos;document&apos; is not defined."><![CDATA[line 3, col 12, Error - &apos;document&apos; is not defined. (no-undef)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 3, col 42, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-tabs"><failure message="Unexpected tab character."><![CDATA[line 4, col 2, Error - Unexpected tab character. (no-tabs)]]></failure></testcase>
+<testcase time="0" name="org.eslint.indent"><failure message="Expected indentation of 2 spaces but found 1 tab."><![CDATA[line 4, col 2, Error - Expected indentation of 2 spaces but found 1 tab. (indent)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 4, col 14, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.indent"><failure message="Expected indentation of 2 spaces but found 1 tab."><![CDATA[line 5, col 2, Error - Expected indentation of 2 spaces but found 1 tab. (indent)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-tabs"><failure message="Unexpected tab character."><![CDATA[line 5, col 2, Error - Unexpected tab character. (no-tabs)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 5, col 17, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 6, col 1, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-tabs"><failure message="Unexpected tab character."><![CDATA[line 7, col 2, Error - Unexpected tab character. (no-tabs)]]></failure></testcase>
+<testcase time="0" name="org.eslint.indent"><failure message="Expected indentation of 2 spaces but found 1 tab."><![CDATA[line 7, col 2, Error - Expected indentation of 2 spaces but found 1 tab. (indent)]]></failure></testcase>
+<testcase time="0" name="org.eslint.func-names"><failure message="Unexpected unnamed function."><![CDATA[line 7, col 15, Warning - Unexpected unnamed function. (func-names)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 7, col 34, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-tabs"><failure message="Unexpected tab character."><![CDATA[line 8, col 2, Error - Unexpected tab character. (no-tabs)]]></failure></testcase>
+<testcase time="0" name="org.eslint.indent"><failure message="Expected indentation of 2 spaces but found 2 tabs."><![CDATA[line 8, col 3, Error - Expected indentation of 2 spaces but found 2 tabs. (indent)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 8, col 27, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.indent"><failure message="Expected indentation of 0 spaces but found 1 tab."><![CDATA[line 9, col 2, Error - Expected indentation of 0 spaces but found 1 tab. (indent)]]></failure></testcase>
+<testcase time="0" name="org.eslint.no-tabs"><failure message="Unexpected tab character."><![CDATA[line 9, col 2, Error - Unexpected tab character. (no-tabs)]]></failure></testcase>
+<testcase time="0" name="org.eslint.semi"><failure message="Missing semicolon."><![CDATA[line 9, col 3, Error - Missing semicolon. (semi)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 9, col 3, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 10, col 2, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.linebreak-style"><failure message="Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;."><![CDATA[line 11, col 1, Error - Expected linebreaks to be &apos;LF&apos; but found &apos;CRLF&apos;. (linebreak-style)]]></failure></testcase>
+<testcase time="0" name="org.eslint.eol-last"><failure message="Newline required at end of file but not found."><![CDATA[line 12, col 27, Error - Newline required at end of file but not found. (eol-last)]]></failure></testcase>
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="3" errors="3" name="C:\Users\jang01\Desktop\Internship\testings\eslint-karma-webpack\app\src\index.js">
+<testcase time="0" name="org.eslint.no-console"><failure message="Unexpected console statement."><![CDATA[line 1, col 1, Warning - Unexpected console statement. (no-console)]]></failure></testcase>
+<testcase time="0" name="org.eslint.quotes"><failure message="Strings must use singlequote."><![CDATA[line 1, col 13, Error - Strings must use singlequote. (quotes)]]></failure></testcase>
+<testcase time="0" name="org.eslint.eol-last"><failure message="Newline required at end of file but not found."><![CDATA[line 1, col 28, Error - Newline required at end of file but not found. (eol-last)]]></failure></testcase>
+</testsuite>
+</testsuites>
