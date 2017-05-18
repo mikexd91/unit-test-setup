@@ -62,7 +62,7 @@ pipeline {
 				script {
 					sh "curl -X GET https://jenkins.tusisobar.com/job/pipeline_demo_Jeremiah/38/testReport/api/json?depth=0 --user ci:cfe87d1aaa67ac831cc93ce3247accf7 >> ./jenkins/jenkinsInput.in";
 
-	        		sh "node jsonParser.js";
+	        		sh "node ./jenkins/jsonParser.js";
 				}
 				
 
