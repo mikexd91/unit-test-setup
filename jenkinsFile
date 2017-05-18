@@ -9,11 +9,29 @@ pipeline {
 			}
 		}
 
+		stage ("Tests") {
+			steps {
+				parallel (
+
+					eslint: {
+						echo "eslint";
+					},
+
+					karma: {
+						echo "karma";
+					}
+
+				)
+			}
+		}
+
 		stage ("checkstyle") {
 			steps {
 				echo "Checkstyle";
 			}
 		}
+
+
 
 	}
 }
