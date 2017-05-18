@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper;
+
 pipeline {
 	agent any
 
@@ -56,6 +58,16 @@ pipeline {
 
 		stage ("report") {
 			steps {
+
+				def TEST_RESULT = sh (
+        			script: "curl -X GET https://jenkins.tusisobar.com/job/pipeline_demo_Jeremiah/38/testReport/api/json?depth=0 --user ci:cfe87d1aaa67ac831cc93ce3247accf7",
+        
+        			returnStdout: true
+        		);
+
+        		def json = new JsonSlurper().parse(apiUrl.newReader())
+
+
 				echo "report";
 			}
 		}
@@ -66,6 +78,7 @@ pipeline {
 			echo "POST ACTION";
 		}
 		failure {
+
 			echo "FAIL!";
 		}
 	}
