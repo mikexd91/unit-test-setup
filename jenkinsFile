@@ -63,7 +63,10 @@ pipeline {
 
 	post {
 		always {
-			echo currentBuild.result;
+			echo "POST ACTION";
+		}
+		failure {
+			echo "FAIL!";
 		}
 	}
 }
