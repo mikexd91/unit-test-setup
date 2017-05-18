@@ -42,19 +42,19 @@ module.exports = function(config) {
 
     //junit reporter option
     junitReporter: {
-        outputDir: './reports/unit-test/junit',
+        outputDir: './test/reports/unit-test/junit',
         outputFile: 'unit-test-report.xml'
     },
 
     //htmlfile reporter option
     htmlReporter: {
-      outputFile: './reports/unit-test/html/unit-test-report.html'
+      outputFile: './test/reports/unit-test/html/unit-test-report.html'
     },
 
     //coverage reporter option
     coverageReporter: {
         type: 'cobertura',
-        dir: './reports/unit-test/coverage'
+        dir: './test/reports/unit-test/coverage'
     },
 
 
