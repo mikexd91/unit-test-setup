@@ -22,22 +22,27 @@ pipeline {
 				parallel (
 
 					eslint: {
-						try {
-							sh 'npm run eslint';
-						} catch (err) {
-							echo err;
-						} finally {
-							checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'app/test/reports/eslint/checkstyle/eslint-report.xml', unHealthy: '';
+						node {
+							try {
+								sh 'npm run eslint';
+							} catch (err) {
+								echo err;
+							} finally {
+								checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'app/test/reports/eslint/checkstyle/eslint-report.xml', unHealthy: '';
+							}
 						}
+						
 					},
 
 					karma: {
-						try {
-							sh 'npm run eslint';
-						} catch (err) {
-							echo err;
-						} finally {
-							junit 'app/test/reports/**/*.xml';
+						node {
+							try {
+								sh 'npm run eslint';
+							} catch (err) {
+								echo err;
+							} finally {
+								junit 'app/test/reports/**/*.xml';
+							}
 						}
 					}
 
