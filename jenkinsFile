@@ -20,11 +20,10 @@ pipeline {
 		stage ("Tests") {
 			steps {
 				parallel (
-
 					karma: {
 						script {
 							try {
-								sh 'npm run test';
+								sh 'npm run test --silent';
 							} catch (err) {
 								echo err;
 							} finally {
