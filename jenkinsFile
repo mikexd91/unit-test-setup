@@ -13,7 +13,7 @@ pipeline {
 		
 		stage ("install") {
 			steps {
-				sh 'npm install'
+				sh 'npm install';
 			}
 		}
 
@@ -22,20 +22,32 @@ pipeline {
 				parallel (
 
 					eslint: {
-						echo "eslint";
+						try {
+							sh 'npm run eslint';
+						} catch (err) {
+							echo err;
+						} finally {
+							checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'app/test/reports/eslint/checkstyle/eslint-report.xml', unHealthy: '';
+						}
 					},
 
 					karma: {
-						echo "karma";
+						try {
+							sh 'npm run eslint';
+						} catch (err) {
+							echo err;
+						} finally {
+							junit 'app/test/reports/**/*.xml';
+						}
 					}
 
 				)
 			}
 		}
 
-		stage ("checkstyle") {
+		stage ("report") {
 			steps {
-				echo "Checkstyle";
+				echo "report";
 			}
 		}
 
