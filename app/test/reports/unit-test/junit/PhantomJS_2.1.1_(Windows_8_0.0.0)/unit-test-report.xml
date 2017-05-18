@@ -1,13 +1,21 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2017-05-18T06:53:26" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="0" failures="0" time="0.003">
+<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2017-05-18T07:20:17" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="0" failures="1" time="0.006">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>
-  <testcase name="Mandatory ga exist Should exist" time="0.002" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Mandatory"/>
-  <testcase name="src Add Expect 2 + 3 = 5" time="0" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).src"/>
-  <testcase name="src MyButton GET &amp; SET id Should init with id = myButton" time="0.001" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).src"/>
+  <testcase name="Mandatory ga exist Should exist" time="0.001" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Mandatory"/>
+  <testcase name="src Add Expect 2 + 3 = 5" time="0.004" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).src">
+    <failure type="">expected 5 to equal 6
+AssertionError@index.test.js:9:46039
+assert@index.test.js:9:324732
+assertEqual@index.test.js:9:339467
+index.test.js:9:240607
+index.test.js:9:39362
+</failure>
+  </testcase>
+  <testcase name="src MyButton GET &amp; SET id Should init with id = myButton" time="0" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).src"/>
   <testcase name="src MyButton GET &amp; SET id Should set id = newMyButton" time="0" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).src"/>
-  <testcase name="src MyButton Adding to parent Should add to document.body" time="0" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).src"/>
+  <testcase name="src MyButton Adding to parent Should add to document.body" time="0.001" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).src"/>
   <system-out>
     <![CDATA[
 ]]>
