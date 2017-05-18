@@ -1,0 +1,19 @@
+pipeline {
+	agent any
+
+	stages {
+
+		stage ("install") {
+			steps {
+				echo "Install";
+			}
+		}
+
+		stage ("checkstyle") {
+			steps {
+				echo "Checkstyle";
+			}
+		}
+
+	}
+}
