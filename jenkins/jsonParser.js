@@ -1,5 +1,6 @@
 var fs = require('fs');
-var filePath = "./jenkinsInput.in";
+var path = require('path');
+var filePath = path.resolve(__dirname, "jenkinsInput.in");
 
 fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
     if (!err) {
