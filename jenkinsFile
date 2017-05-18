@@ -66,7 +66,7 @@ pipeline {
 	        			returnStdout: true
 	        		);
 
-	        		sh "node jsonParser.js one two=three four";
+	        		sh "node jsonParser.js " + TEST_RESULT;
 				}
 				
 
