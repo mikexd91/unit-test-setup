@@ -5,7 +5,7 @@ pipeline {
 
 		stage ("Setup NodeJS") {
 			steps {
-				nodejs(nodeJSInstallationName: 'Node v6.10.3 - install automatically') {
+				nodejs(configId: '08136756-fa8c-4f4c-9bb1-516707682c34', nodeJSInstallationName: 'Node v6.10.3 - install automatically') {
 				    sh 'node --version';
 				}
 			}
