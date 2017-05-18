@@ -21,6 +21,18 @@ pipeline {
 			steps {
 				parallel (
 
+					karma: {
+						script {
+							try {
+								sh 'npm run test';
+							} catch (err) {
+								echo err;
+							} finally {
+								junit 'app/test/reports/**/*.xml';
+							}
+						}
+					},
+
 					eslint: {
 						script {
 							try {
@@ -32,18 +44,6 @@ pipeline {
 							}
 						}
 						
-					},
-
-					karma: {
-						script {
-							try {
-								sh 'npm run test';
-							} catch (err) {
-								echo err;
-							} finally {
-								junit 'app/test/reports/**/*.xml';
-							}
-						}
 					}
 
 				)
