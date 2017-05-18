@@ -4,7 +4,7 @@ var filePath = path.resolve(__dirname, "jenkinsInput.in");
 
 fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
     if (!err) {
-        var json = JSON.parse(data);
+        var json = JSON.parse(data.trim());
 		console.log("Test Result: \nFail Count: " + json.failCount + "\nPass Count: " + json.passCount + "\nSkip Count: " + json.skipCount);
     } else {
         console.log(err);
