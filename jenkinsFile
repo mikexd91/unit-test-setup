@@ -57,8 +57,7 @@ pipeline {
 				echo "report";
 
 				script {
-					j = new groovy.json.JsonSlurper().parseText(new URL("https://httpbin.org/get").getText());
-					println j.headers["User-Agent"];
+				
 				}
 			}
 		}

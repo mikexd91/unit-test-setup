@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        './src/index.test.js'
+        './index.test.js'
     ],
 
 
@@ -27,7 +27,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        './src/index.test.js':['webpack','coverage']
+        './index.test.js':['webpack','coverage']
     },
 
     //webpack config file
@@ -37,7 +37,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['junit', 'html', 'coverage'],
+    reporters: ['progress', 'junit', 'html', 'coverage'],
 
     //junit reporter option
     junitReporter: {
