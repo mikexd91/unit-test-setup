@@ -66,7 +66,7 @@ pipeline {
 	        			returnStdout: true
 	        		);
 
-	        		def json = new JsonSlurper().parse(TEST_RESULT);
+	        		sh "node process-2.js one two=three four";
 				}
 				
 
