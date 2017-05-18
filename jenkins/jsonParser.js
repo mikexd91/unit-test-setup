@@ -12,7 +12,5 @@ fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
 
 function processData(data) {
 	var json = JSON.parse(data);
-	console.log("Test Result: \nFail Count: " + json.failCount 
-			  + "\nPass Count: " + json.passCount 
-			  + "\nSkip Count: " + json.skipCount);
+	console.log("Test Result: \nFail Count: " + json.failCount + "\nPass Count: " + json.passCount + "\nSkip Count: " + json.skipCount);
 }
