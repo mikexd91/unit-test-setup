@@ -55,6 +55,10 @@ pipeline {
 		stage ("report") {
 			steps {
 				echo "report";
+
+				script {
+					var url = new URL("http://www.google.com");
+				}
 			}
 		}
 
