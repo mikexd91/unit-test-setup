@@ -3,6 +3,14 @@ pipeline {
 
 	stages {
 
+		stage ("Setup NodeJS") {
+			steps {
+				nodejs(nodeJSInstallationName: 'Node v6.10.3 - install automatically') {
+				    sh 'node --version';
+				}
+			}
+		}
+		
 		stage ("install") {
 			steps {
 				echo "Install";
