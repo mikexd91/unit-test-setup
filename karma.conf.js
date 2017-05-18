@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: './app',
+    basePath: './app/test',
 
 
     // frameworks to use
@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        './test/index.test.js'
+        './index.test.js'
     ],
 
 
@@ -27,8 +27,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        './src/*.js' : ['coverage'],
-        './test/index.test.js' : ['webpack']
+        './index.test.js':['webpack','coverage']
     },
 
     //webpack config file
@@ -42,19 +41,19 @@ module.exports = function(config) {
 
     //junit reporter option
     junitReporter: {
-        outputDir: './test/reports/unit-test/junit',
+        outputDir: './reports/unit-test/junit',
         outputFile: 'unit-test-report.xml'
     },
 
     //htmlfile reporter option
     htmlReporter: {
-      outputFile: './test/reports/unit-test/html/unit-test-report.html'
+      outputFile: './reports/unit-test/html/unit-test-report.html'
     },
 
     //coverage reporter option
     coverageReporter: {
         type: 'cobertura',
-        dir: './test/reports/unit-test/coverage'
+        dir: './reports/unit-test/coverage'
     },
 
 
