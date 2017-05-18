@@ -26,6 +26,7 @@ pipeline {
 								sh 'npm run test --silent';
 							} catch (err) {
 								echo "Karma Test Failed";
+								echo err;
 							} finally {
 								junit 'app/test/reports/**/*.xml';
 
