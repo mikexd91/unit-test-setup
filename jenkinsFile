@@ -57,17 +57,13 @@ pipeline {
 		stage ("report") {
 			steps {
 				echo "report";
-
-				script {
-
-				}
 			}
 		}
 	}
 
 	post {
 		always {
-			echo currentBuild;
+			echo "END";
 		}
 	}
 }
