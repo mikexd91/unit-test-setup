@@ -30,7 +30,7 @@ pipeline {
 							} finally {
 								junit 'app/test/reports/**/*.xml';
 
-								step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'app\\test\\reports\\unit-test\\coverage\\PhantomJS 2.1.1 (Windows 8 0.0.0)\\*.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
+								step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'app/test/reports/unit-test/coverage/**/*.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
 
 								echo currentBuild.result
 							}
