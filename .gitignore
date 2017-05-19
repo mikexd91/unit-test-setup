@@ -61,5 +61,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# Windows jUnit report 
+app/test/unit-test/junit/PhantomJS_2.1.1_(Windows_8_0.0.0)
+
 
 # End of https://www.gitignore.io/api/node

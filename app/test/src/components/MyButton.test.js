@@ -13,7 +13,7 @@ describe ("A2", function () {
 	describe ("B1", function () {
 
 		describe ("C", function () {
-			it ("foo2", function (done) {
+			it ("foo2 @impt", function (done) {
 				expect(myBtn.id).to.equal(id);
 				done();
 			});
@@ -28,7 +28,7 @@ describe ("A2", function () {
 	});
 
 	describe ("B2", function () {
-		it ("foo4", function (done) {
+		it ("foo4 @superImpt", function (done) {
 			myBtn.addTo(document.body);
 			expect(document.getElementById(id) == null).to.be.false;
 			done();

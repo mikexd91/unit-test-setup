@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="unit" timestamp="2017-05-19T10:00:54" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="0" failures="0" time="0.002">
+<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="unit" timestamp="2017-05-19T10:37:50" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="0" failures="0" time="0.003">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>
-  <testcase name="Mandatory >> ga exist" time="0.002" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).ga exist"/>
-  <testcase name="src >> A1 >> B" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).A1"/>
-  <testcase name="src >> A2 >> B1 >> C" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).A2"/>
-  <testcase name="src >> A2 >> B1 >> C" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).A2"/>
-  <testcase name="src >> A2 >> B2" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).A2"/>
+  <testcase name="Mandatory >> ga exist" time="0.002" classname="Mandatory.ga exist"/>
+  <testcase name="src >> A1 >> B" time="0.001" classname="src.A1.B"/>
+  <testcase name="src >> A2 >> B1 >> C" time="0" classname="src.A2.@impt"/>
+  <testcase name="src >> A2 >> B1 >> C" time="0" classname="src.A2.B1"/>
+  <testcase name="src >> A2 >> B2" time="0" classname="src.A2.@superImpt"/>
   <system-out>
     <![CDATA[
 ]]>
