@@ -61,7 +61,7 @@ module.exports = function(config) {
             var pkg = result.suite[0];
             var token = result.description.match(/@[a-zA-Z0-9]+/g);
             var className = (token === null) ?  result.suite[1] : token[0];
-            return className : pkg;
+            return pkg + "." + className;
         },
         suite: "unit"
     },
