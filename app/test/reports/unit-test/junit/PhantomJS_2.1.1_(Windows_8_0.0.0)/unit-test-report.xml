@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2017-05-19T09:45:06" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="0" failures="0" time="0.003">
+<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2017-05-19T09:48:45" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="0" failures="0" time="0.003">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>
   <testcase name="Mandatory ga exist Should exist" time="0.002" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).Mandatory.ga exist"/>
-  <testcase name="src A1 B Expect 2 + 3 = 5" time="0.001" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).src.A1.B"/>
-  <testcase name="src A2 B1 C Should init with id = myButton" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).src.A2.B1.C"/>
-  <testcase name="src A2 B1 C Should set id = newMyButton" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).src.A2.B1.C"/>
-  <testcase name="src A2 B2 Should add to document.body" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).src.A2.B2"/>
+  <testcase name="src A1 B Expect 2 + 3 = 5" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).src.A1"/>
+  <testcase name="src A2 B1 C Should init with id = myButton" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).src.A2"/>
+  <testcase name="src A2 B1 C Should set id = newMyButton" time="0.001" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).src.A2"/>
+  <testcase name="src A2 B2 Should add to document.body" time="0" classname="PhantomJS 2.1.1 (Windows 8 0.0.0).src.A2"/>
   <system-out>
     <![CDATA[
 ]]>
