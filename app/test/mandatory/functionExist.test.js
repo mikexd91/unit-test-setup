@@ -1,5 +1,4 @@
 var chai = require ('chai');
-var utils = require ('../utils.js');
 var expect = chai.expect;
 
 describe ("ga exist", function(){

@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Wed May 17 2017 15:18:10 GMT+0800 (Malay Peninsula Standard Time)
-var filepaths = require('./app/test/reports/reports_filepath');
+var filepaths = require('./app/test/reports/utils/reports_filepath');
 var types = filepaths.types;
 
 module.exports = function(config) {
@@ -17,7 +17,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        './src/**/*.js',
         './test/index.test.js'
     ],
 
@@ -31,7 +30,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
         './test/index.test.js':['webpack', 'coverage']
-    },, 
+    },
 
     //webpack config file
     webpack: require('./webpack.config.js'),
