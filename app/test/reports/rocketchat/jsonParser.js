@@ -1,25 +1,18 @@
-var fs = require('fs');
 var path = require('path');
+var helper = require('../utils/helpers');
+var readFile = helper.readFile;
+var printObject = helper.printObject;
 
 function Rocketchat () {
 	var filePaths = require ('../reports_filepath.js');
 	for (var type in filePaths.types) {
 		if (type != 'coverage') {
 			var outputFilePath = path.resolve (__dirname, "../../" + filePaths.types[type].outputFile.json);
-			readFile(outputFilePath, type);
+			readFile(outputFilePath, function(data){ processData (type, data); });
 		}
 	}
 }
 
-function readFile (file, type) {
-	fs.readFile(file, {encoding: 'utf-8'}, function(err,data){
-		if (!err) {
-		    processData(type, data);
-		} else {
-		    console.log(err);
-		}
-	});
-}
 
 function processData(type, data) {
 
@@ -34,7 +27,7 @@ function processData(type, data) {
 
 function processUnitTest (json) {
 	var summary = json.summary;
-	printResult({
+	printObject({
 		"Test Result:" : {
 			"Success:" : summary.success,
 			"Failed:" : summary.failed
@@ -49,32 +42,12 @@ function processEslint (json) {
 		warningCount += data.warningCount;
 	});
 
-	printResult({
+	printObject({
 		"Lint Result:" : {
 			"Error Count:" : errorCount,
 			"Warning Count:" : warningCount
 		}
 	})
-}
-
-function printResult (resultObj, space = "") {
-	if (typeof resultObj != 'object') {
-		console.log (space + resultObj);
-	} else {
-		for (var key in resultObj) {
-
-			if (typeof resultObj[key] == 'object') {
-				console.log(space + key);
-				//recursive call
-				printResult (resultObj[key], space + "...");
-			} else {
-				console.log (space + key + resultObj[key]);
-			}
-		}
-	}
-
-	if (space == "")
-		console.log();
 }
 
 Rocketchat();

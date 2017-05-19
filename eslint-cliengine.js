@@ -1,35 +1,20 @@
-var baseOutputDir = './app/test/reports/eslint/';
-var fileName = 'eslint-report';
-var formatters = [
-	{ format:'html', fileExt:'.html'},
-	{ format:'checkstyle', fileExt:'.xml'},
-	{ format:'json', fileExt:'.json'}
-]
-
-var fs = require('fs');
-
-var writeFile_err = function (msg) {
-	return function (err) {
-		if (err) {
-			return console.log(err);
-		} else {
-			console.log (msg + ": File Write Complete");
-		}
-	}
-}
-
+var fs = require('fs'); // node file system
+var path = require ('path');
 var CLIEngine = require('eslint').CLIEngine
+var writeFileCallback = require ('./app/test/reports/utils/helpers').writeFileCallback;
+var eslint_options = require ('./app/test/reports/utils/reports_filepath.js').types.eslint;
 
+// init eslint eliengine
 var cli = new CLIEngine ();
 
+// eslint will execute on all the files in the dir 
+// to generate the report
 var report = cli.executeOnFiles(['app/src/']);
 
-var htmlFormatter = cli.getFormatter('html');
-
-for (var i = 0; i < formatters.length; i++) {
-	var f = formatters[i];
-	var pathToFile = baseOutputDir + f.format + '/' + fileName + f.fileExt;
-	var formatter = cli.getFormatter(f.format);
+// for each format, write the report to file allocated to each format
+for (var format in eslint_options.formats) {
+	var pathToFile = path.resolve(__dirname + "/app", eslint_options.outputFile[format]);
+	var formatter = cli.getFormatter(format);
 	var result = formatter(report.results);
-	fs.writeFile(pathToFile, result, writeFile_err(f.format));
+	fs.writeFile(pathToFile, result, writeFileCallback(format + ": File Write Complete"));
 }

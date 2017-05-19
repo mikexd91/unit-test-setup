@@ -4,7 +4,7 @@ var expect = chai.expect;
 
 describe ("Add", function () {
 	it ("Expect 2 + 3 = 5", function (done) {
-		expect(add(2, 3)).to.equal(6);
+		expect(add(2, 3)).to.equal(5);
 		done();
 	})
 });
