@@ -44,7 +44,7 @@ function processEslint (json) {
 		warningCount += data.warningCount;
 	});
 
-	printObject/({
+	printObject({
 		"Lint Result:" : {
 			"Error Count:" : errorCount,
 			"Warning Count:" : warningCount
