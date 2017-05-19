@@ -60,12 +60,9 @@ pipeline {
 			steps {
 
 				script {
-					sh "> ./jenkins/jenkinsInput.in";  //clear jenkinsInput.in
 
-					sh "curl -X GET https://jenkins.tusisobar.com/job/pipeline_demo_Jeremiah/38/testReport/api/json?depth=0 >> ./jenkins/jenkinsInput.in --user ci:cfe87d1aaa67ac831cc93ce3247accf7"; //write api json into file
-
-	        		def TEST_RESULT = sh (
-	        			script: "node ./jenkins/jsonParser.js", //process json into readable format
+					def TEST_RESULT = sh (
+	        			script: "node ./app/test/reports/rocketchat/jsonParser.js", //process json into readable format
 	        			returnStdout: true //save console output to variable
 	        		); 
 
