@@ -12,16 +12,18 @@ describe ("MyButton", function () {
 
 	describe ("GET & SET id", function () {
 
-		it ("Should init with id = " + id, function (done) {
-			expect(myBtn.id).to.equal(id);
-			done();
-		});
+		describe ("Foo", function () {
+			it ("Should init with id = " + id, function (done) {
+				expect(myBtn.id).to.equal(id);
+				done();
+			});
 
-		var newId = "newMyButton";
-		it ("Should set id = " + newId, function (done) {
-			myBtn.id = newId;
-			expect(myBtn.id).to.equal(newId);
-			done();
+			var newId = "newMyButton";
+			it ("Should set id = " + newId, function (done) {
+				myBtn.id = newId;
+				expect(myBtn.id).to.equal(newId);
+				done();
+			});
 		});
 	});
 

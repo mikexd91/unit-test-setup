@@ -92,3 +92,17 @@ module.exports.writeFileCallback = function (msg) {
 		}
 	}
 }
+
+// PRE: CoverageConfig passed in with all the neccesary values
+// POST: returns a configuration for the Coverage Reporter 
+module.exports.generateCoverageReporterConfig = function (coverageConfig) {
+	var reporterConfig = []
+	for (var format in coverageConfig.formats) {
+		reporterConfig.push({
+			type: coverageConfig.formats[format],
+            dir: coverageConfig.outputDir[format],
+            file: "../" + coverageConfig.filename[format]
+		});
+	}
+	return reporterConfig;
+}

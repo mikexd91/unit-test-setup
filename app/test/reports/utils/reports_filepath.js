@@ -23,7 +23,7 @@ var paths = {
 		coverage: {
 			dir: '/coverage',
 			filename: 'coverage-report',
-			formats: ['cobertura', 'json']
+			formats: ['cobertura', 'html', 'json']
 		}
 	},
 
@@ -37,6 +37,7 @@ var paths = {
 			return '.html';
 		if (format == 'json') 
 			return '.json';
+		return '.txt';
 	}
 }
 

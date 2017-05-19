@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "eslint": "node eslint-cliengine.js",
-    "test": "karma start"
+    "test": "karma start",
+    "test:mocha": "mocha ./app/test/src/index.test.js"
   },
   "author": "",
   "license": "ISC",

@@ -3,6 +3,9 @@
 var filepaths = require('./app/test/reports/utils/reports_filepath');
 var types = filepaths.types;
 
+//function to generate coverage report options
+var generateCoverageReporterConfig = require ("./app/test/reports/utils/helpers").generateCoverageReporterConfig;
+
 module.exports = function(config) {
   config.set({
 
@@ -60,18 +63,7 @@ module.exports = function(config) {
 
     //coverage reporter option
     coverageReporter: {
-        reporters : [
-            { 
-                type: types.coverage.formats.cobertura, 
-                dir: types.coverage.outputDir.cobertura,
-                file: "../" + types.coverage.filename.cobertura
-            },
-            { 
-                type: types.coverage.formats.json, 
-                dir: types.coverage.outputDir.json,
-                file: "../" + types.coverage.filename.json
-            }
-        ]
+        reporters : generateCoverageReporterConfig (types.coverage)
     },
 
 
