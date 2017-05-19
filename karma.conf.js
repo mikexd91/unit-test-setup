@@ -53,7 +53,10 @@ module.exports = function(config) {
     //junit reporter option
     junitReporter: {
         outputDir: types.unitTest.outputDir.junit, // './reports/unit-test/junit',
-        outputFile: types.unitTest.filename.junit // unit-test-report.xml
+        outputFile: types.unitTest.filename.junit, // unit-test-report.xml
+        classNameFormatter: function (browser, result) {
+            return result.suite.join('.');
+        }
     },
 
     //htmlfile reporter option
