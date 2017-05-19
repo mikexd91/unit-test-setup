@@ -54,9 +54,9 @@ module.exports = function(config) {
     junitReporter: {
         outputDir: types.unitTest.outputDir.junit, // './reports/unit-test/junit',
         outputFile: types.unitTest.filename.junit, // unit-test-report.xml
-        // classNameFormatter: function (browser, result) {
-        //     return browser+'.'+result.suite.join('.');
-        // }
+        classNameFormatter: function (browser, result) {
+            return browser+'.'+result.suite.join('.');
+        }
     },
 
     //htmlfile reporter option
