@@ -55,7 +55,7 @@ module.exports = function(config) {
         outputDir: types.unitTest.outputDir.junit, // './reports/unit-test/junit',
         outputFile: types.unitTest.filename.junit, // unit-test-report.xml
         classNameFormatter: function (browser, result) {
-            return browser+'.'+result.suite[0]+'.'+result.suite[1];
+            return browser+'.'+result.suite[1];
         },
         suite: "unit"
     },

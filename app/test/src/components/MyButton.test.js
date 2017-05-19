@@ -13,13 +13,13 @@ describe ("A2", function () {
 	describe ("B1", function () {
 
 		describe ("C", function () {
-			it ("Should init with id = " + id, function (done) {
+			it ("foo2", function (done) {
 				expect(myBtn.id).to.equal(id);
 				done();
 			});
 
 			var newId = "newMyButton";
-			it ("Should set id = " + newId, function (done) {
+			it ("foo3" + newId, function (done) {
 				myBtn.id = newId;
 				expect(myBtn.id).to.equal(newId);
 				done();
@@ -28,7 +28,7 @@ describe ("A2", function () {
 	});
 
 	describe ("B2", function () {
-		it ("Should add to document.body", function (done) {
+		it ("foo4", function (done) {
 			myBtn.addTo(document.body);
 			expect(document.getElementById(id) == null).to.be.false;
 			done();
