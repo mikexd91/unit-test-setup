@@ -58,10 +58,10 @@ module.exports = function(config) {
             return result.suite.join(" >> ");
         },
         classNameFormatter: function (browser, result) {
-            var pkg = result.suite[0] + "." + result.suite[1];
+            var pkg = result.suite[0];
             var token = result.description.match(/@[a-zA-Z0-9]+/g);
-            var className = (token === null) ? (result.suite.length > 2) ? result.suite[2] : null : token[0];
-            return (className != null) ? pkg + "." + className : pkg;
+            var className = (token === null) ?  result.suite[1] : token[0];
+            return className : pkg;
         },
         suite: "unit"
     },
