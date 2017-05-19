@@ -56,7 +56,8 @@ module.exports = function(config) {
         outputFile: types.unitTest.filename.junit, // unit-test-report.xml
         classNameFormatter: function (browser, result) {
             return browser+'.'+result.suite[0]+'.'+result.suite[1];
-        }
+        },
+        suite: "unit"
     },
 
     //htmlfile reporter option
