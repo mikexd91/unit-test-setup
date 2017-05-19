@@ -13,7 +13,7 @@ describe ("A2", function () {
 	describe ("B1", function () {
 
 		describe ("C", function () {
-			it ("foo2 @impt", function (done) {
+			it ("foo23 @impt", function (done) {
 				expect(myBtn.id).to.equal(id);
 				done();
 			});
