@@ -8,16 +8,18 @@ function Rocketchat () {
 	for (var type in filePaths.types) {
 		if (type != 'coverage') {
 			var outputFilePath = path.resolve (__dirname, "../../../" + filePaths.types[type].outputFile.json);
-			readFile(outputFilePath, function(data){ processData (type, data); });
+			readFile(outputFilePath, readFileComplete(type));
 		}
 	}
 }
 
+function readFileComplete (type) {
+	return function(data){ processData (type, data); }
+}
+
 
 function processData(type, data) {
-
 	var json = JSON.parse(data);
-
 	switch (type) {
 		case 'unitTest' : processUnitTest(json); break;
 		case 'eslint' : processEslint(json); break;

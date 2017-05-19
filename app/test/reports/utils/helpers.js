@@ -69,7 +69,7 @@ module.exports.printObject = function (resultObj, pre = "") {
 			if (typeof resultObj[key] == 'object') {
 				console.log(pre + key);
 				//recursive call
-				printObject (resultObj[key], pre + "...");
+				module.exports.printObject (resultObj[key], pre + "...");
 			} else {
 				console.log (pre + key + resultObj[key]);
 			}
