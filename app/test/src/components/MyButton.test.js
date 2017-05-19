@@ -2,7 +2,7 @@ var MyButton = require ("../../../src/components/MyButton");
 var chai = require ("chai");
 var expect = chai.expect;
 
-describe ("MyButton", function () {
+describe ("A2", function () {
 	var myBtn;
 	var id = 'myButton';
 
@@ -10,9 +10,9 @@ describe ("MyButton", function () {
 		myBtn = new MyButton(id);
 	})
 
-	describe ("GET & SET id", function () {
+	describe ("B1", function () {
 
-		describe ("Foo", function () {
+		describe ("C", function () {
 			it ("Should init with id = " + id, function (done) {
 				expect(myBtn.id).to.equal(id);
 				done();
@@ -27,7 +27,7 @@ describe ("MyButton", function () {
 		});
 	});
 
-	describe ("Adding to parent", function () {
+	describe ("B2", function () {
 		it ("Should add to document.body", function (done) {
 			myBtn.addTo(document.body);
 			expect(document.getElementById(id) == null).to.be.false;
