@@ -66,7 +66,7 @@ function printResult (resultObj, space = "") {
 			if (typeof resultObj[key] == 'object') {
 				console.log(space + key);
 				//recursive call
-				printResult (resultObj[key], space + ">>>");
+				printResult (resultObj[key], space + ">");
 			} else {
 				console.log (space + key + resultObj[key]);
 			}
