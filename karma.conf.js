@@ -1,5 +1,7 @@
 // Karma configuration
 // Generated on Wed May 17 2017 15:18:10 GMT+0800 (Malay Peninsula Standard Time)
+var filepaths = require('./app/test/reports/reports_filepath');
+var types = filepaths.types;
 
 module.exports = function(config) {
   config.set({
@@ -37,23 +39,39 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'junit', 'html', 'coverage'],
+    reporters: ['progress', 'json', 'junit', 'html', 'coverage'],
+
+    //json reporter option
+    jsonReporter: {
+      stdout: false,
+      outputFile: types.unitTest.outputFile.json // './reports/unit-test/json/unit-test-report.json
+    },
 
     //junit reporter option
     junitReporter: {
-        outputDir: './reports/unit-test/junit',
-        outputFile: 'unit-test-report.xml'
+        outputDir: types.unitTest.outputDir.junit, // './reports/unit-test/junit',
+        outputFile: types.unitTest.filename.junit // unit-test-report.xml
     },
 
     //htmlfile reporter option
     htmlReporter: {
-      outputFile: './reports/unit-test/html/unit-test-report.html'
+      outputFile: types.unitTest.outputFile.html // './reports/unit-test/html/unit-test-report.html'
     },
 
     //coverage reporter option
     coverageReporter: {
-        type: 'cobertura',
-        dir: './reports/unit-test/coverage'
+        reporters : [
+            { 
+                type: types.coverage.formats.cobertura, 
+                dir: types.coverage.outputDir.cobertura,
+                file: "../" + types.coverage.filename.cobertura
+            },
+            { 
+                type: types.coverage.formats.json, 
+                dir: types.coverage.outputDir.json,
+                file: "../" + types.coverage.filename.json
+            }
+        ]
     },
 
 
