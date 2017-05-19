@@ -7,7 +7,7 @@ function Rocketchat () {
 	var filePaths = require ('../utils/reports_filepath.js');
 	for (var type in filePaths.types) {
 		if (type != 'coverage') {
-			var outputFilePath = path.resolve (__dirname, "../../" + filePaths.types[type].outputFile.json);
+			var outputFilePath = path.resolve (__dirname, "../../../" + filePaths.types[type].outputFile.json);
 			readFile(outputFilePath, function(data){ processData (type, data); });
 		}
 	}
