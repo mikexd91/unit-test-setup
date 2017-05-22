@@ -42,12 +42,11 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'json', 'junit', 'html', 'coverage'],
+    reporters: ['progress', 'taggedJSON', 'junit', 'html', 'coverage'],
 
     //json reporter option
-    jsonReporter: {
-      stdout: false,
-      outputFile: types.unitTest.outputFile.json // './reports/unit-test/json/unit-test-report.json
+    taggedJSONReporter: {
+        outputFile: types.unitTest.outputFile.json // './reports/unit-test/json/unit-test-report.json
     },
 
     //junit reporter option

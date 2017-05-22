@@ -28,13 +28,32 @@ function processData(type, data) {
 }
 
 function processUnitTest (json) {
-	var summary = json.summary;
-	printObject({
-		"Test Result:" : {
-			"Success:" : summary.success,
-			"Failed:" : summary.failed
+	var successCount = failureCount = 0; 
+	var currentBrowser;
+	var failures;
+	for (var i = 0; i < json.reports.length; i++) {
+		currentBrowser = json.reports[i];
+		currentBrowser.success = currentBrowser.success.length;
+		failures = currentBrowser.failure;
+		for (var key in failures) {
+			failures[key] = currentBrowser.failure[key].length;
 		}
-	})
+		currentBrowser.failure = failures;
+	}
+
+	delete json.summary.error;
+	delete json.summary.disconnected;
+	delete json.summary.exitCode;
+
+	printObject (json);
+
+	// var summary = json.summary;
+	// printObject({
+	// 	"Test Result:" : {
+	// 		"Success:" : summary.success,
+	// 		"Failed:" : summary.failed
+	// 	}
+	// })
 }
 
 function processEslint (json) {
@@ -45,9 +64,9 @@ function processEslint (json) {
 	});
 
 	printObject({
-		"Lint Result:" : {
-			"Error Count:" : errorCount,
-			"Warning Count:" : warningCount
+		"Lint Result" : {
+			"Error Count" : errorCount,
+			"Warning Count" : warningCount
 		}
 	})
 }

@@ -61,17 +61,23 @@ module.exports.readFile = function (file, callback) {
 //		printed for each level, brought forward to next level
 // POST: object printed orderly
 module.exports.printObject = function (resultObj, pre = "") {
+
 	if (typeof resultObj != 'object') {
 		console.log (pre + resultObj);
 	} else {
 		for (var key in resultObj) {
 
-			if (typeof resultObj[key] == 'object') {
-				console.log(pre + key);
+			if (Array.isArray(resultObj[key])) {
+				console.log(pre + key + ":");
+				for (var i = 0; i < resultObj[key].length; i++) {
+					module.exports.printObject (resultObj[key][i], pre + "...");
+				}
+			} else if (typeof resultObj[key] == 'object') {
+				console.log(pre + key + ":");
 				//recursive call
 				module.exports.printObject (resultObj[key], pre + "...");
 			} else {
-				console.log (pre + key + resultObj[key]);
+				console.log (pre + key + ": " + resultObj[key]);
 			}
 		}
 	}
