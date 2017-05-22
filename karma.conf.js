@@ -42,23 +42,19 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'taggedJSON', 'junit', 'html', 'coverage'],
-
-    //json reporter option
-    taggedJSONReporter: {
-        outputFile: types.unitTest.outputFile.json // './reports/unit-test/json/unit-test-report.json
-    },
+    reporters: ['progress', 'junit', 'html', 'coverage'],
 
     //junit reporter option
     junitReporter: {
         outputDir: types.unitTest.outputDir.junit, // './reports/unit-test/junit',
-        outputFile: types.unitTest.filename.junit, // unit-test-report.xml
+        outputFile: "../" + types.unitTest.filename.junit, // unit-test-report.xml
+
         nameFormatter: function (browser, result) {
             return result.suite.join(" >> ") + " >> " + result.description;
         },
         classNameFormatter: function (browser, result) {
             var pkg = result.suite[0];
-            var token = result.description.match(/@[a-zA-Z0-9]+/g);
+            var token = result.description.match(/@@[a-zA-Z0-9]+/g);
             var className = (token === null) ?  result.suite[1] : token[0];
             return pkg + "." + className;
         },

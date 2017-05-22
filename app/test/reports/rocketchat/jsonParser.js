@@ -6,8 +6,11 @@ var printObject = helper.printObject;
 function Rocketchat () {
 	var filePaths = require ('../utils/reports_filepath.js');
 	for (var type in filePaths.types) {
-		if (type != 'coverage') {
+		if (type == 'eslint') {
 			var outputFilePath = path.resolve (__dirname, "../../../" + filePaths.types[type].outputFile.json);
+			readFile(outputFilePath, readFileComplete(type));
+		} else if (type == 'unitTest') {
+			var outputFilePath = path.resolve (__dirname, "../../../" + filePaths.types[type].outputFile.junit);
 			readFile(outputFilePath, readFileComplete(type));
 		}
 	}
@@ -17,43 +20,59 @@ function readFileComplete (type) {
 	return function(data){ processData (type, data); }
 }
 
+function parseXML (data) {
+
+	var DOMParser = require("xmldom").DOMParser;
+	var doc = new DOMParser().parseFromString(data);
+	return doc;
+}
+
 
 function processData(type, data) {
-	var json = JSON.parse(data);
+	
 	switch (type) {
-		case 'unitTest' : processUnitTest(json); break;
-		case 'eslint' : processEslint(json); break;
+		case 'unitTest' :{ 
+			var xml = parseXML(data);
+			processUnitTest(xml); 
+			break;
+		}
+		case 'eslint' : {
+			var json = JSON.parse(data);
+			processEslint(json); 
+			break;
+		}
 	}
 
 }
 
-function processUnitTest (json) {
-	var successCount = failureCount = 0; 
-	var currentBrowser;
-	var failures;
-	for (var i = 0; i < json.reports.length; i++) {
-		currentBrowser = json.reports[i];
-		currentBrowser.success = currentBrowser.success.length;
-		failures = currentBrowser.failure;
-		for (var key in failures) {
-			failures[key] = currentBrowser.failure[key].length;
+function processUnitTest (dom) {
+	var result = {
+		success: 0,
+		failure: {
+			normal: 0,
 		}
-		currentBrowser.failure = failures;
+	}
+	var testcases = dom.documentElement.getElementsByTagName("testcase");
+	var testcase;
+	var failCount = 0;
+	for (var i = 0; i < testcases.length; i++) {
+		testcase = testcases[i];
+		var classname = testcase.getAttribute("classname");
+		var isFailure = testcase.getElementsByTagName("failure").length > 0;
+
+		if (isFailure) {
+			failCount++;
+			var token = classname.match(/@@[a-zA-Z0-9]+/g);
+			var tag = (token == null) ? 'normal' : token[0];
+			result.failure[tag] = (result.failure[tag] == null) ? 1 : result.failure[tag] + 1;
+		} else {
+			result.success++;
+		}
 	}
 
-	delete json.summary.error;
-	delete json.summary.disconnected;
-	delete json.summary.exitCode;
+	result.failure.total = failCount;
 
-	printObject (json);
-
-	// var summary = json.summary;
-	// printObject({
-	// 	"Test Result:" : {
-	// 		"Success:" : summary.success,
-	// 		"Failed:" : summary.failed
-	// 	}
-	// })
+	printObject({'unit-test' : result});
 }
 
 function processEslint (json) {
