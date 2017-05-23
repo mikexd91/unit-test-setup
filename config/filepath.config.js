@@ -1,7 +1,22 @@
-var preprocess = require ("./helpers").preprocess_paths;
+var helper = require ("../app/test/utils/helpers");
+var preprocess = helper.preprocess_paths;
+var processEslint = helper.processEslint;
+var processUnitTest = helper.processUnitTest;
 
-var paths = {
+module.exports.eslint_paths = {
+	//relative to package.json
+	pathToApp: './app', 
+	files: './app/src'
+}
+
+module.exports.karma_paths = {
+	base: '../app', //relative to karma.config.js
+	files: './test/index.test.js' //relative to base
+}
+
+module.exports.reports_paths = preprocess({
 	// the base of the directory where the reports will go
+	// relative to package.json
 	base: './test/reports',
 
 	// the different type of reports that will be generated
@@ -11,13 +26,21 @@ var paths = {
 		eslint: {
 			dir: '/eslint',
 			filename: 'eslint-report',
-			formats: ['checkstyle', 'html', 'json']
+			formats: ['checkstyle', 'html', 'json'],
+			rocketchat: {
+				data: 'json',
+				processor: processEslint
+			}
 		},
 	
 		unitTest: {
 			dir: '/unit-test',
 			filename: 'unit-test-report',
-			formats: ['html', 'json', 'junit']
+			formats: ['html', 'junit'],
+			rocketchat: {
+				data: 'junit',
+				processor: processUnitTest
+			}
 		},
 	
 		coverage: {
@@ -39,7 +62,7 @@ var paths = {
 			return '.json';
 		return '.txt';
 	}
-}
+})
 
 //Format after preprocessing: 
 // paths = {
@@ -67,5 +90,3 @@ var paths = {
 // 		...
 // 	}
 // }
-
-module.exports = preprocess(paths);

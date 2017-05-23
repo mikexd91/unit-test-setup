@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "eslint": "node eslint-cliengine.js",
-    "test": "karma start",
-    "test:mocha": "mocha ./app/test/src/index.test.js"
+    "eslint": "node cli/eslint.cli.js",
+    "test": "karma start ./config/karma.config.js",
+    "rocketchat": "node cli/rocketchat.cli.js"
   },
   "author": "",
   "license": "ISC",

@@ -76,7 +76,7 @@ pipeline {
 					// execute js file to generate Rocketchat friendly text 
 					// stores result in TEST_RESULT
 					def TEST_RESULT = sh (
-	        			script: "node ./app/test/reports/rocketchat/jsonParser.js", //process json into readable format
+	        			script: "npm run rocketchat", //process json into readable format
 	        			returnStdout: true //save console output to variable
 	        		); 
 

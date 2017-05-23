@@ -86,18 +86,42 @@ module.exports.printObject = function (resultObj, pre = "") {
 		console.log();
 }
 
+module.exports.eslint_fn = {
+	dirExist: function (err) {
+		return (!err || err.code == 'EEXIST');
+	},
 
-//PRE: 
-//POST: a function that will call special message to be called if there is no err will be returned
-module.exports.writeFileCallback = function (msg) {
-	return function (err) {
-		if (err) {
-			return console.log(err);
-		} else {
-			console.log (msg);
+	mkdirCallback: function (fs, filepath, result, format) {
+		return function (err) {
+			if (!module.exports.eslint_fn.dirExist) 
+				return console.log(err);
+			else 
+				fs.writeFile (
+					filepath, 
+					result,
+					module.exports.eslint_fn.writeFileCallback (fs, filepath, result, format)
+				);
 		}
-	}
+	},
+
+	writeFileCallback: function (fs, path, result, format) {
+		return function (err) {
+
+			if (err) {
+				if (err.code == "ENOENT") {
+					fs.open (path, 'w', function (err) {
+						if (err) 
+							return console.log (err);
+						fs.writeFile(path, result, module.exports.writeFileCallback(fs, path, result, format));
+					});
+				}
+			} else {
+				console.log (format + ": File Write Complete");
+			}
+		}
+	}	
 }
+
 
 // PRE: CoverageConfig passed in with all the neccesary values
 // POST: returns a configuration for the Coverage Reporter 
@@ -111,4 +135,80 @@ module.exports.generateCoverageReporterConfig = function (coverageConfig) {
 		});
 	}
 	return reporterConfig;
+}
+
+module.exports.processUnitTest = function(data) {
+	try {
+
+		var dom = module.exports.parseXML(data);
+
+	} catch (e) {
+
+		console.log(e);
+		return;
+
+	} 
+
+	var result = {
+		success: 0,
+		failure: {
+			normal: 0,
+		}
+	}
+	var testcases = dom.documentElement.getElementsByTagName("testcase");
+	var testcase;
+	var failCount = 0;
+	for (var i = 0; i < testcases.length; i++) {
+		testcase = testcases[i];
+		var classname = testcase.getAttribute("classname");
+		var isFailure = testcase.getElementsByTagName("failure").length > 0;
+
+		if (isFailure) {
+			failCount++;
+			var token = classname.match(/@@[a-zA-Z0-9]+/g);
+			var tag = (token == null) ? 'normal' : token[0];
+			result.failure[tag] = (result.failure[tag] == null) ? 1 : result.failure[tag] + 1;
+		} else {
+			result.success++;
+		}
+	}
+
+	result.failure.total = failCount;
+
+	return {'unit-test' : result};
+	
+}
+
+module.exports.processEslint = function (data) {
+	try {
+		var json = JSON.parse(data);
+	} catch (e) {
+		console.log(e);
+		return;
+	} 
+
+	var errorCount = warningCount = 0;
+	json.forEach(function (data, index, arr){
+		errorCount += data.errorCount;
+		warningCount += data.warningCount;
+	});
+
+	return {
+		"Lint Result" : {
+			"Error Count" : errorCount,
+			"Warning Count" : warningCount
+		}
+	};
+}
+
+module.exports.parseXML = function (data) {
+	var DOMParser = require("xmldom").DOMParser;
+	try {
+		var doc = new DOMParser().parseFromString(data);
+	} catch (e) {
+		throw e;
+		return;
+	} finally {
+		return doc;
+	}
 }
