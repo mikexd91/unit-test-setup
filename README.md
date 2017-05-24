@@ -38,6 +38,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
                 |- /components
                     |- some_test.test.js
             |- index.test.js
+            
         ```  
   
 
@@ -99,6 +100,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
                         |- /type 2
                             |-  format1
                                 |- filename.ext1
+
                ```
         
         - `rocketchat:Object` --- setting for if this report is to be sent to rocketchat
@@ -127,7 +129,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
     - `reporters:Array(String)` --- a list of reporter karma will use
      
     - `reporterOptions:Object` --- a collection of reporters "<dataType>Reporter" 
-    
+
         - ``` 
             reporterOptions = {
                 htmlReporter: {
