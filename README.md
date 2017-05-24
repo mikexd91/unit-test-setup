@@ -1,14 +1,13 @@
 # Project Title
----
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio nec facilisis sodales. Curabitur sed est hendrerit, rutrum justo ut, consectetur odio.
 
 ## Getting Started
----
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio nec facilisis sodales. Curabitur sed est hendrerit, rutrum justo ut, consectetur odio.
 
 ## Built with
----
+
 - `Karma`
 - `Webpack`
 - `eslint`
@@ -17,7 +16,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 - `xmldom`
 
 ## Usage
----
+
 #### Entry File: `index.test.js`
 - The tests are carried out in two stage
     - ***Mandatory-Stage:*** 
@@ -26,7 +25,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
     - ***Src-Stage***
         - The rest of the test are then carried out after the Mandatory-Stage
         - Tests are stored in `"./src"` folder relative to the **entry file**
-- Directory Tree:
+- Directory Tree:  
+
     - ```
         i.e.
         |-  /test
@@ -43,7 +43,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 
 #### Writing Test Cases:
 - follows the standard Mocha Chai format 
-- i.e.
+- i.e.  
+
     - ```javascript
         var expect = require("chai").expect;
         describe ("Suite name", function () {
@@ -56,7 +57,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 
 #### Tagging
 - In the unit-test reports, test cases with tags will be specially isolated
-- Tagging with `@@<Keyword>`
+- Tagging with `@@<Keyword>`  
+
     - ```javascript
         var expect = require ("chai").expect;
         describe ("Test suite", function (){
@@ -84,7 +86,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
         - `filename:String` ---  common filename throughout
         
         - `formats:Array(String)` ---  the type of formats to be generated
-            - _the file directory will look like this:_
+            - _the file directory will look like this:_ 
+
             - ```
                 /karma.base
                     |-  /base
@@ -123,7 +126,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
     
     - `reporters:Array(String)` --- a list of reporter karma will use
      
-    - `reporterOptions:Object` --- a collection of reporters "<dataType>Reporter"
+    - `reporterOptions:Object` --- a collection of reporters "<dataType>Reporter" 
+    
         - ``` 
             reporterOptions = {
                 htmlReporter: {
