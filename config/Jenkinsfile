@@ -3,6 +3,10 @@ import groovy.json.JsonSlurper;
 pipeline {
 	agent any
 
+	environment {
+		TEST_PASSED = 'true'
+	}
+
 	stages {
 		
 		stage ("install") {
@@ -87,7 +91,7 @@ pipeline {
 	        		//	returnStdout: true //save console output to variable
 	        		// ); 
 
-	        		def ROCKETCHAT_CHANNEL = "jenkins-test"
+	        		def ROCKETCHAT_CHANNEL = "jenkins-tests"
 
 	        		// Jenkins plugin to send message to Rocketchat
 	        		// TODO: make channel a variable
