@@ -38,6 +38,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 - This quick start consist of 3 individual parts 
     1. Writing First Test Case
     2. Run ESLint against your codes
+    3. Continuous Integration - Jenkins & Rocketchat
 
 #### 1. Writing First Test Case:
 - We will have two files in the following directory: 
@@ -46,6 +47,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
     
 - Proceed to write some code in `Calculator.js`
     - `Calculator.js`
+
     ``` javascript
         // Calculator.js
         function Calculator () {
@@ -60,6 +62,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 
 - Now write your first test file
      - `calculator.test.js`
+     
     ``` javascript
         // calculator.test.js
         var expect = require ("chai").expect;
