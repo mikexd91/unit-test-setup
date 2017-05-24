@@ -38,7 +38,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 - This quick start consist of 3 individual parts 
     1. Writing First Test Case
     2. Run ESLint against your codes
-    3. Continuous Integration - Jenkins & Rocketchat
 
 #### 1. Writing First Test Case:
 - We will have two files in the following directory: 
@@ -185,9 +184,12 @@ reports will be processed by jenkins and a summary of the reports will be sent t
 
 ## Built with
 
-- `Karma`
-- `Webpack`
-- `eslint`
-- `mocha`
-- `phantomjs`
-- `xmldom`
+- [`karma`](https://karma-runner.github.io/1.0/index.html)
+- [`karma-junit-reporter`](https://www.npmjs.com/package/karma-junit-reporter)
+- [`karma-coverage`](https://www.npmjs.com/package/karma-coverage)
+- [`webpack`](https://webpack.js.org/)
+- [`eslint`](http://eslint.org/)
+- [`mocha`](https://mochajs.org/)
+- [`phantomjs`](http://phantomjs.org/)
+- [`phantomjs-prebuilt`](https://www.npmjs.com/package/phantomjs-prebuilt)
+- [`xmldom`](https://www.npmjs.com/package/xmldom)
