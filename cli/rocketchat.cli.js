@@ -1,6 +1,6 @@
 var path = require('path');
 var helper = require('../app/test/utils/helpers');
-var filePaths = require ('../config/filepath.config.js').reports_paths;
+var filePaths = require ('../config/options.config.js').reports_paths;
 
 var readFile = helper.readFile;
 var printObject = helper.printObject;

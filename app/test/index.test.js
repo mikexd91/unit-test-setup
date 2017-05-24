@@ -1,4 +1,4 @@
-// a flag to see if all mandatory test cases passed
+	// a flag to see if all mandatory test cases passed
 var mandatoryAllPass = true;
 
 describe ("Mandatory", function () {

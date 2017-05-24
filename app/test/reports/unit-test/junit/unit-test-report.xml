@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="unit" timestamp="2017-05-23T09:42:55" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="0" failures="1" time="0.005">
+<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2017-05-24T03:02:36" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="0" failures="1" time="0.005">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>
-  <testcase name="Mandatory >> ga exist >> Should exist" time="0.002" classname="Mandatory.ga exist"/>
+  <testcase name="Mandatory >> ga exist >> Should exist" time="0.001" classname="Mandatory.ga exist"/>
   <testcase name="src >> A1 >> B >> foo1 @@SUPERRRRImpt" time="0.003" classname="src.@@SUPERRRRImpt">
     <failure type="">expected 5 to equal 6
 AssertionError@test/index.test.js:9:46495
@@ -15,7 +15,7 @@ test/index.test.js:9:39393
   </testcase>
   <testcase name="src >> A2 >> B1 >> C >> foo23 @impt" time="0" classname="src.A2"/>
   <testcase name="src >> A2 >> B1 >> C >> foo3newMyButton" time="0" classname="src.A2"/>
-  <testcase name="src >> A2 >> B2 >> foo4 @superImpt" time="0" classname="src.A2"/>
+  <testcase name="src >> A2 >> B2 >> foo4 @superImpt" time="0.001" classname="src.A2"/>
   <system-out>
     <![CDATA[
 ]]>

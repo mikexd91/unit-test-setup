@@ -1,23 +1,20 @@
 // Karma configuration
 // Generated on Wed May 17 2017 15:18:10 GMT+0800 (Malay Peninsula Standard Time)
-var filepaths = require('./filepath.config');
+var options = require('./options.config');
 
 // karma's
-var karma_filepaths = filepaths.karma_paths;
+var karmaOptions = options.karma;
 
 // reports' 
-var reports_filepaths = filepaths.reports_paths;
-var types = reports_filepaths.types;
-
-//function to generate coverage report options
-var generateCoverageReporterConfig = require ("../app/test/utils/helpers").generateCoverageReporterConfig;
+var reportsFilepaths = options.reportsPaths;
+var types = reportsFilepaths.types;
 
 module.exports = function(config) {
     
-    var karma_config = {
+    var karma = {
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: karma_filepaths.base,
+        basePath: karmaOptions.base,
 
 
         // frameworks to use
@@ -27,13 +24,12 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            karma_filepaths.files
+            karmaOptions.files
         ],
 
 
         // list of files to exclude
-        exclude: [
-        ],
+        exclude: [],
 
 
         // preprocess matching files before serving them to the browser
@@ -43,74 +39,45 @@ module.exports = function(config) {
         },
 
         //webpack config file
-        webpack: require('./webpack.config.js'),
+        webpack: require(karmaOptions.webpack),
 
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress', 'junit', 'html', 'coverage'],
-
-        //junit reporter option
-        junitReporter: {
-            outputDir: types.unitTest.outputDir.junit, // './reports/unit-test/junit',
-            outputFile: "../" + types.unitTest.filename.junit, // unit-test-report.xml
-
-            nameFormatter: function (browser, result) {
-                return result.suite.join(" >> ") + " >> " + result.description;
-            },
-            classNameFormatter: function (browser, result) {
-                var pkg = result.suite[0];
-                var token = result.description.match(/@@[a-zA-Z0-9]+/g);
-                var className = (token === null) ?  result.suite[1] : token[0];
-                return pkg + "." + className;
-            },
-            suite: "unit"
-        },
-
-        //htmlfile reporter option
-        htmlReporter: {
-          outputFile: types.unitTest.outputFile.html // './reports/unit-test/html/unit-test-report.html'
-        },
-
-        //coverage reporter option
-        coverageReporter: {
-            reporters : generateCoverageReporterConfig (types.coverage)
-        },
+        reporters: karmaOptions.reporters,
 
 
         // web server port
-        port: 9876,
+        port: karmaOptions.port,
 
 
-        // enable / disable colors in the output (reporters and logs)
-        colors: true,
-
-
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
-
-
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: false,
-
-
+        // DEFAULTS
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: ['PhantomJS'],
-
-
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: false,
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
         singleRun: true,
-
         // Concurrency level
         // how many browser should be started simultaneous
-        concurrency: Infinity
+        concurrency: Infinity,
+
+
+        //IRRELEVANT 
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
+        // level of logging
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: config.LOG_INFO,
     }
 
-    karma_config.preprocessors[karma_filepaths.files] = ['webpack', 'coverage'];
+    // set preprocessors 
+    karma.preprocessors[karmaOptions.files] = karmaOptions.filePreprocessor;
 
-    config.set(karma_config);
+    // set reporters options
+    karmaOptions.loadReporterOptions(karma, karmaOptions);
+    config.set(karma);
 }
