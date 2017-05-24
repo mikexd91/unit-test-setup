@@ -80,9 +80,16 @@ pipeline {
 	        			returnStdout: true //save console output to variable
 	        		); 
 
+	        		// execute js file to get rocketchat channel
+	        		// stores result in ROCKETCHAT_CHANNEL
+	        		def ROCKETCHAT_CHANNEL = sh (
+	        			script: "npm run rocketchat:getChannel", //process json into readable format
+	        			returnStdout: true //save console output to variable
+	        		); 
+
 	        		// Jenkins plugin to send message to Rocketchat
 	        		// TODO: make channel a variable
-	        		rocketSend channel: 'jenkins-tests', message: TEST_RESULT, rawMessage: true;
+	        		rocketSend channel: ROCKETCHAT_CHANNEL, message: TEST_RESULT, rawMessage: true;
 
 
 				}
