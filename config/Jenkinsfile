@@ -1,6 +1,11 @@
 pipeline {
 	agent any
 
+	def junitPath = '';
+	def coveragePath = '';
+	def eslintPath = '';
+	def rocketchatChannel = '';
+	
 	stages {
 		
 		stage ("install") {
@@ -20,10 +25,10 @@ pipeline {
 	        			returnStdout: true //save console output to variable
 	        		).trim().split("\n");
 
-	        		def junitPath = variables[3]; 
-	        		def coveragePath = variables[4]; 
-	        		def eslintPath = variables[5]; 
-	        		def rocketchatChannel = variables[6];
+	        		junitPath = variables[3]; 
+	        		coveragePath = variables[4]; 
+	        		eslintPath = variables[5]; 
+	        		rocketchatChannel = variables[6];
 	        	}
 			}
 		}
