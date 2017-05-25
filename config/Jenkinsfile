@@ -1,12 +1,12 @@
+def junitPath = '';
+def coveragePath = '';
+def eslintPath = '';
+def rocketchatChannel = '';
+
 pipeline {
 	agent any
 
 	stages {
-	
-		def junitPath = '';
-		def coveragePath = '';
-		def eslintPath = '';
-		def rocketchatChannel = '';
 		
 		stage ("install") {
 			// execute npm install
