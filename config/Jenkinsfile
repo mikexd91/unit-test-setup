@@ -20,10 +20,10 @@ pipeline {
 	        			returnStdout: true //save console output to variable
 	        		).trim().split("\n");
 
-	        		var junitPath = variables[3]; 
-	        		var coveragePath = variables[4]; 
-	        		var eslintPath = variables[5]; 
-	        		var rocketchatChannel = variables[6];
+	        		def junitPath = variables[3]; 
+	        		def coveragePath = variables[4]; 
+	        		def eslintPath = variables[5]; 
+	        		def rocketchatChannel = variables[6];
 	        	}
 			}
 		}
