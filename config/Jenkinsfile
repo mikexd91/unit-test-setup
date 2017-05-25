@@ -20,7 +20,10 @@ pipeline {
 	        			returnStdout: true //save console output to variable
 	        		).trim().split("\n");
 
-	        		println variables[3]; 
+	        		var junitPath = variables[3]; 
+	        		var coveragePath = variables[4]; 
+	        		var eslintPath = variables[5]; 
+	        		var rocketchatChannel = variables[6];
 	        	}
 			}
 		}
@@ -47,8 +50,8 @@ pipeline {
 
 							} finally {
 
-								//echo junitPath;
-								//echo coveragePath;
+								echo junitPath;
+								echo coveragePath;
 
 								// Jenkins plugin to record test reports
 								junit 'app/test/reports/**/*.xml'; 
@@ -72,7 +75,7 @@ pipeline {
 
 							} finally {
 
-								//echo eslintPath;
+								echo eslintPath;
 								
 								// Jenkins plugin to record checkstyle reports
 								checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'app/test/reports/eslint/checkstyle/eslint-report.xml', unHealthy: '';
@@ -105,7 +108,8 @@ pipeline {
 	        		//	returnStdout: true //save console output to variable
 	        		// ); 
 
-	        		def ROCKETCHAT_CHANNEL = "jenkins-tests"
+	        		echo rocketchatChannel;
+	        		def ROCKETCHAT_CHANNEL = "jenkins-tests";
 	        		// Jenkins plugin to send message to Rocketchat
 	        		// TODO: make channel a variable
 	        		// rocketSend channel: ROCKETCHAT_CHANNEL, message: TEST_RESULT, rawMessage: true;
