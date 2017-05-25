@@ -109,7 +109,7 @@ pipeline {
 	        		// TODO: make channel a variable
 	        		// rocketSend channel: ROCKETCHAT_CHANNEL, message: TEST_RESULT, rawMessage: true;
 
-
+	        		println TEST_RESULT
 				}
 			}
 		}
