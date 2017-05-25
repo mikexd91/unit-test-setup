@@ -6,7 +6,8 @@ pipeline {
 		stage ("install") {
 			// execute npm install
 			steps {
-				sh 'npm install';
+				echo "SKIP INSTALL";
+				//sh 'npm install';
 			}
 		}
 
@@ -16,9 +17,9 @@ pipeline {
 					def variables = sh (
 	        			script: "npm run jenkins", //process json into readable format
 	        			returnStdout: true //save console output to variable
-	        		).trim().split(",");
+	        		).trim();
 
-	        		echo variables;
+	        		println variables;
 
 	        		def junitPath = variables[0];
 	        		def coveragePath = variables[1];
