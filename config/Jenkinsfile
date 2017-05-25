@@ -6,6 +6,7 @@ pipeline {
 		stage ("install") {
 			// execute npm install
 			steps {
+				echo "SKIP INSTALL";
 				//sh 'npm install';
 			}
 		}
@@ -19,7 +20,7 @@ pipeline {
 	        		).trim().split(",");
 
 	        		println variables; 
-	        		
+
 	        		def junitPath = variables[0];
 	        		def coveragePath = variables[1];
 	        		def eslintPath = variables[2];
