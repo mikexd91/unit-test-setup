@@ -6,14 +6,14 @@ pipeline {
 		stage ("install") {
 			// execute npm install
 			steps {
-				sh 'npm install';
+				//sh 'npm install';
 			}
 		}
 
 		stage ("read variables") {
 			steps {
 				script {
-					def variables = sh (
+				def variables = sh (
 	        			script: "npm run jenkins", //process json into readable format
 	        			returnStdout: true //save console output to variable
 	        		).trim().split(",");
