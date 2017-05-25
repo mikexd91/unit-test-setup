@@ -16,10 +16,10 @@ pipeline {
 					def variables = sh (
 	        			script: "npm run jenkins", //process json into readable format
 	        			returnStdout: true //save console output to variable
-	        		).trim();
+	        		).trim().split(",");
 
-	        		println variables;
-
+	        		println variables; 
+	        		
 	        		def junitPath = variables[0];
 	        		def coveragePath = variables[1];
 	        		def eslintPath = variables[2];
@@ -108,7 +108,6 @@ pipeline {
 	        		// ); 
 
 	        		def ROCKETCHAT_CHANNEL = "jenkins-tests"
-
 	        		// Jenkins plugin to send message to Rocketchat
 	        		// TODO: make channel a variable
 	        		// rocketSend channel: ROCKETCHAT_CHANNEL, message: TEST_RESULT, rawMessage: true;
