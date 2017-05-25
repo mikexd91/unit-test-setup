@@ -17,9 +17,9 @@ pipeline {
 					def variables = sh (
 	        			script: "npm run jenkins", //process json into readable format
 	        			returnStdout: true //save console output to variable
-	        		).trim().split('\n');
+	        		).trim();
 
-	        		println variables[0]; 
+	        		println variables; 
 	        	}
 			}
 		}
