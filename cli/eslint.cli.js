@@ -1,6 +1,6 @@
 var fs = require('fs'); // node file system
 var path = require ('path');
-var helpers = require ('../app/test/utils/helpers');
+var helpers = require ('../config/utils/helpers');
 var eslintOptions = require ('../config/options.config.js').eslint;
 var reportsPath = require ('../config/options.config.js').reportsPaths;
 var CLIEngine = require ('eslint').CLIEngine;

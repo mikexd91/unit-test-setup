@@ -1,11 +1,5 @@
-import groovy.json.JsonSlurper;
-
 pipeline {
 	agent any
-
-	environment {
-		TEST_PASSED = 'true'
-	}
 
 	stages {
 		
@@ -13,6 +7,19 @@ pipeline {
 			// execute npm install
 			steps {
 				sh 'npm install';
+			}
+		}
+
+		stage ("read variables") {
+			steps {
+				def variables = sh (
+        			script: "npm run jenkins", //process json into readable format
+        			returnStdout: true //save console output to variable
+        		).trim().split(",");
+
+        		def junitPath = variables[0];
+        		def coveragePath = variables[1];
+        		def eslintPath = variables[2];
 			}
 		}
 
@@ -38,6 +45,9 @@ pipeline {
 
 							} finally {
 
+								echo junitPath;
+								echo coveragePath;
+
 								// Jenkins plugin to record test reports
 								junit 'app/test/reports/**/*.xml'; 
 
@@ -60,6 +70,8 @@ pipeline {
 
 							} finally {
 
+								echo eslintPath;
+								
 								// Jenkins plugin to record checkstyle reports
 								checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'app/test/reports/eslint/checkstyle/eslint-report.xml', unHealthy: '';
 

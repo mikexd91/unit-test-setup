@@ -1,11 +1,11 @@
-var helper = require ("../app/test/utils/helpers");
+var helper = require ("./utils/helpers");
 var processEslint = helper.processEslint;
 var processUnitTest = helper.processUnitTest;
 var loadKarmaReporterOptions = helper.loadKarmaReporterOptions;
 var generateReporterList = helper.generateReporterList;
 var nameFormatter = helper.junitReporter.nameFormatter;
 var classNameFormatter = helper.junitReporter.classNameFormatter;
-var generateCoverageReporterConfig = require ("../app/test/utils/helpers").generateCoverageReporterConfig;
+var generateCoverageReporterConfig = helper.generateCoverageReporterConfig;
 
 module.exports.reportsPaths = {
 	// String: the base of the directory where the reports will go
@@ -59,6 +59,20 @@ module.exports.reportsPaths = {
 			formats: ['cobertura', 'html', 'json']
 		}
 	},
+
+	// match format to file extension
+	fileExtensions: {
+		checkstyle: '.xml',
+		junit: '.xml',
+		cobertura: '.xml',
+		html: '.html',
+		json: '.json',
+		default: '.txt'
+	},
+
+	ext : function (format) { return this.fileExtensions[format] == null 
+								   ? this.fileExtensions.default 
+								   : this.fileExtensions[format]; }
 }
 
 module.exports.eslint = {

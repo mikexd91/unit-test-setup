@@ -138,6 +138,7 @@ module.exports.eslint_fn = {
 						)
 					);
 				}
+				recursiveCall();
 				
 			}
 		}
