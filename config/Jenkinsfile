@@ -14,10 +14,16 @@ pipeline {
 		stage ("read variables") {
 			steps {
 				script {
-					def variables = sh (
+
+					def processStdout (str) {
+						str = str.split("\n");
+						return str[2..str.size-1];
+					}
+
+					def variables = processStdout(sh (
 	        			script: "npm run jenkins", //process json into readable format
 	        			returnStdout: true //save console output to variable
-	        		).trim();
+	        		).trim());
 
 	        		println variables; 
 	        	}
