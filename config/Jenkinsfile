@@ -46,8 +46,8 @@ pipeline {
 
 							} finally {
 
-								echo junitPath;
-								echo coveragePath;
+								//echo junitPath;
+								//echo coveragePath;
 
 								// Jenkins plugin to record test reports
 								junit 'app/test/reports/**/*.xml'; 
@@ -71,7 +71,7 @@ pipeline {
 
 							} finally {
 
-								echo eslintPath;
+								//echo eslintPath;
 								
 								// Jenkins plugin to record checkstyle reports
 								checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'app/test/reports/eslint/checkstyle/eslint-report.xml', unHealthy: '';
