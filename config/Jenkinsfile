@@ -18,6 +18,8 @@ pipeline {
 	        			returnStdout: true //save console output to variable
 	        		).trim().split(",");
 
+	        		echo variables;
+
 	        		def junitPath = variables[0];
 	        		def coveragePath = variables[1];
 	        		def eslintPath = variables[2];
@@ -109,7 +111,7 @@ pipeline {
 
 	        		// Jenkins plugin to send message to Rocketchat
 	        		// TODO: make channel a variable
-	        		rocketSend channel: ROCKETCHAT_CHANNEL, message: TEST_RESULT, rawMessage: true;
+	        		// rocketSend channel: ROCKETCHAT_CHANNEL, message: TEST_RESULT, rawMessage: true;
 
 
 				}
