@@ -7,7 +7,8 @@
     "eslint": "node cli/eslint.cli.js",
     "test": "karma start ./config/karma.config.js",
     "jenkins": "node cli/jenkins.cli.js VARIABLES",
-    "rocketchat": "node cli/jenkins.cli.js ROCKETCHAT"
+    "rocketchat": "node cli/jenkins.cli.js ROCKETCHAT",
+    "init": "node config/utils/init.js"
   },
   "author": "",
   "license": "ISC",

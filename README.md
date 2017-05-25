@@ -2,6 +2,21 @@
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio nec facilisis sodales. Curabitur sed est hendrerit, rutrum justo ut, consectetur odio.
 
+## Installation
+1. Clone from git
+    - Open up either your `terminal(Mac OS)` or `cmd(windows)`
+    - Navigate to your project folder
+        - `cd ./your/project/folder`
+    - Execute `git init`
+    - Lastly, clone `<PROJECT TITLE>` repository by executing:
+        - `git clone <PROJECT GIT URL>`
+
+2. Run `npm run init`
+    - Again in either terminal or cmd execute `npm run init`
+    - You will be presented with 2 questions
+        - `rocketchat channel name:String` --- if you have rocketchat already hooked up with jenkins you can enter the rocketchat channel name that you want test reports summamry to be senet to.
+        - `Karma port number:Number` --- this is the port number that Karma runner will run all the test on. Defaults to `9876`
+
 ## Getting Started
 - The tests are carried out in two stage
     - ***Mandatory-Stage:*** 
