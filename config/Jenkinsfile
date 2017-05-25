@@ -6,8 +6,7 @@ pipeline {
 		stage ("install") {
 			// execute npm install
 			steps {
-				echo "SKIP INSTALL";
-				//sh 'npm install';
+				sh 'npm install';
 			}
 		}
 
