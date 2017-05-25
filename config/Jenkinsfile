@@ -55,14 +55,11 @@ pipeline {
 
 							} finally {
 
-								echo junitPath;
-								echo coveragePath;
-
 								// Jenkins plugin to record test reports
-								junit 'app/test/reports/**/*.xml'; 
+								junit junitPath; 
 
 								// Jenkins plugin to record code coverage reports
-								step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'app/test/reports/unit-test/coverage/**/*.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
+								step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: coveragePath, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
 
 							}
 						}
@@ -80,10 +77,8 @@ pipeline {
 
 							} finally {
 
-								echo eslintPath;
-								
 								// Jenkins plugin to record checkstyle reports
-								checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'app/test/reports/eslint/checkstyle/eslint-report.xml', unHealthy: '';
+								checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: eslintPath, unHealthy: '';
 
 							}
 						}
