@@ -12,14 +12,16 @@ pipeline {
 
 		stage ("read variables") {
 			steps {
-				def variables = sh (
-        			script: "npm run jenkins", //process json into readable format
-        			returnStdout: true //save console output to variable
-        		).trim().split(",");
+				script {
+					def variables = sh (
+	        			script: "npm run jenkins", //process json into readable format
+	        			returnStdout: true //save console output to variable
+	        		).trim().split(",");
 
-        		def junitPath = variables[0];
-        		def coveragePath = variables[1];
-        		def eslintPath = variables[2];
+	        		def junitPath = variables[0];
+	        		def coveragePath = variables[1];
+	        		def eslintPath = variables[2];
+	        	}
 			}
 		}
 
