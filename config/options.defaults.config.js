@@ -1,11 +1,11 @@
 var helper = require ("./utils/helpers");
-var processEslint = helper.processEslint;
-var processUnitTest = helper.processUnitTest;
-var loadKarmaReporterOptions = helper.loadKarmaReporterOptions;
-var generateReporterList = helper.generateReporterList;
-var nameFormatter = helper.junitReporter.nameFormatter;
-var classNameFormatter = helper.junitReporter.classNameFormatter;
-var generateCoverageReporterConfig = helper.generateCoverageReporterConfig;
+var processEslint = helper.RocketchatHelper.processEslint;
+var processUnitTest = helper.RocketchatHelper.processUnitTest;
+var loadKarmaReporterOptions = helper.ConfigHelper.loadKarmaReporterOptions;
+var generateReporterList = helper.ConfigHelper.generateReporterList;
+var nameFormatter = helper.ConfigHelper.junitReporter.nameFormatter;
+var classNameFormatter = helper.ConfigHelper.junitReporter.classNameFormatter;
+var generateCoverageReporterConfig = helper.ConfigHelper.generateCoverageReporterConfig;
 
 module.exports.reportsPaths = {
 	// String: the base of the directory where the reports will go
@@ -158,6 +158,11 @@ module.exports.karma = {
 
 		return karmaOption;
 	}
+}
+
+module.exports.jenkins = {
+	email: '',
+	rocketchatChannel: ''
 }
 
 //Format after preprocessing: 

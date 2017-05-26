@@ -45,7 +45,7 @@ function sendReportSummary () {
 			);
 
 			var processor = filePaths.types[type].rocketchat.processor
-			helper.readFile(outputFilePath, readFileComplete(helper, processor));
+			helper.FileSystemHelper.readFile(outputFilePath, readFileComplete(helper, processor));
 		}
 	}
 }
@@ -58,5 +58,4 @@ function processData(helper, processor, data) {
 
 }
 
-console.log(process.argv);
 Rocketchat(process.argv[2]);

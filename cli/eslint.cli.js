@@ -9,8 +9,8 @@ var CLIEngine = require ('eslint').CLIEngine;
 var reportsPathEslint = reportsPath.types.eslint;
 
 // functions from
-var eslint_mkdirCallback = helpers.eslint_fn.mkdirCallback;
-var eslint_dirExist = helpers.eslint_fn.dirExist;
+var eslint_mkdirCallback = helpers.ESLintCLIHelper.mkdirCallback;
+var eslint_dirExist = helpers.FileSystemHelper.dirExist;
 
 // init eslint eliengine
 var cli = new CLIEngine ();

@@ -1,6 +1,6 @@
 var defaults = require ('./options.defaults.config');
 var helper = require ('./utils/helpers' );
-var preprocess = helper.preprocess_paths;
+var preprocess = helper.ConfigHelper.preprocess_paths;
 var merge = helper.merge;
 
 // load user's definition of project config
@@ -18,10 +18,10 @@ var karma = merge(defaults.karma.preprocess(defaults.karma, reportsPaths), proje
 
 // except for this
 // either its the user input or null
-var rocketchatChannel = projectConfig.rocketchatChannel;
+var jenkins = merge(defaults.jenkins, projectConfig.jenkins);
 
 // exports 
 module.exports.reportsPaths = reportsPaths;
 module.exports.eslint = eslint;
 module.exports.karma = karma;
-module.exports.rocketchatChannel = rocketchatChannel;
+module.exports.jenkins = jenkins;

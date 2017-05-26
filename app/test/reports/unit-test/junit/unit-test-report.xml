@@ -1,17 +1,10 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2017-05-26T03:47:35" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="1" failures="1" time="0.005">
+<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2017-05-26T07:41:59" id="0" hostname="WSSIN2HHG8YZ1" tests="1" errors="0" failures="0" time="0.002">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>
-  <testcase name="Mandatory >> sample mandatory >> Should be mandatotry" time="0.005" classname="Mandatory.sample mandatory">
-    <failure type="">expected 'mandatory' to equal 'mandatoryy'
-AssertionError@test/index.test.js:9:49663
-assert@test/index.test.js:9:319094
-assertEqual@test/index.test.js:9:333829
-test/index.test.js:9:237788
-test/index.test.js:9:23596
-</failure>
-  </testcase>
+  <testcase name="Mandatory >> sample mandatory >> Should be mandatotry" time="0.002" classname="Mandatory.sample mandatory"/>
+  <testcase name="Open >> Sample Open >> Should be a sample" time="0" classname="Open.Sample Open"/>
   <system-out>
     <![CDATA[
 ]]>

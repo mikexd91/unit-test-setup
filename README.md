@@ -2,6 +2,7 @@
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio nec facilisis sodales. Curabitur sed est hendrerit, rutrum justo ut, consectetur odio.
 
+# Quick Start
 ## Installation
 1. Clone from git
     - Open up either your `terminal(Mac OS)` or `cmd(windows)`
@@ -11,14 +12,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
     - Lastly, clone project repository by executing:
         - `git clone <PROJECT GIT URL>`
 
-2. Install Dependencies 
+2. Run Setup 
     - simply execute `npm install`
-
-3. Setup configuration
-    - Again in either terminal or cmd execute `npm run config`
-    - You will be presented with 2 questions
-        - `rocketchat channel name:String` --- if you have rocketchat already hooked up with jenkins you can enter the rocketchat channel name that you want test reports summamry to be senet to.
-        - `Karma port number:Number` --- this is the port number that Karma runner will run all the test on. Defaults to `9876`
+    - You will be presented with questions to assist in the setting up
+        - `Project Title` --- The title of your project
+        - `Rocketchat Channel` --- If you have rocketchat already hooked up with jenkins you can enter the rocketchat channel name that you want test reports summamry to be senet to.
+        - `Email` --- For sending of reports to your email
+        - `Git repository url` --- To allow us to help you hook up repository locally 
 
 ## Getting Started
 - The tests are carried out in two stage
@@ -51,9 +51,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
         ```  
   
 
-## Quick start
+## Running Tests
 
-- This quick start consist of 3 individual parts 
+- This section consist of 2 individual parts 
     1. Writing First Test Case
     2. Run ESLint against your codes
 
@@ -95,8 +95,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
             });
         });
     ```
-- Open up terminal and run the following command 
-    > npm run test
+- Open up terminal and run the following command: 
+    `npm run test`
 - Navigate to `./app/test/reports/` folder for your test reports
         
 #### 2. Run ESLint against your codes
@@ -115,6 +115,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 
 reports will be processed by jenkins and a summary of the reports will be sent to your rocketchat channel.
 
+# Advanced
 ## Features
 #### Tagging
 - In the unit-test reports, test cases with tags will be specially isolated
