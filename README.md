@@ -103,8 +103,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 
 - Ensure that you have at least 1 `.js` file in your `./app/src/`
 - Open your terminal and run the following command
-    > npm run eslint
-- Navigate to ./app/test/reports/ folder for your test reports 
+    `npm run eslint`
+- Navigate to `./app/test/reports/` folder for your test reports 
 
 #### 3. Continuous Integration - Jenkins & Rocketchat
 
