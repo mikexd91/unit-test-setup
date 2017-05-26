@@ -65,7 +65,7 @@ typings/
 app/test/reports
 
 # User's Config file
-./project.config.js
+project.config.js
 
 
 # End of https://www.gitignore.io/api/node
