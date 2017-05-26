@@ -1,6 +1,6 @@
 module.exports = {
-    karma: { port: 1234 },
+    karma: { port: 9876 },
     eslint: {},
-    reportsPaths: {},
-    rocketchatChannel: 'fslkdfj' 
+    reportsPaths: { eslint: {}, reportsPaths: {}, karma: {} },
+    rocketchatChannel: 'sjflkdjlfs' 
 }

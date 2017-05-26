@@ -5,7 +5,7 @@ function readInput () {
 		output: process.stdout
 	});
 
-	var config = {karma:{}, eslint:{}, reportsPaths:{}}; //require ("../../project.config");
+	var config = {karma:{}, eslint:{}, reportsPaths:{ eslint: {}, reportsPaths: {}, karma: {}}}; //require ("../../project.config");
 	query(interface, "Rocketchat Channel Name:\n", function(channel){
 		processRocketChatChannel(channel, config, function () {
 			query(interface, "Karma Server Port:\n", function (port) {

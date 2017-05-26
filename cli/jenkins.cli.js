@@ -58,4 +58,5 @@ function processData(helper, processor, data) {
 
 }
 
+console.log(process.argv);
 Rocketchat(process.argv[2]);
