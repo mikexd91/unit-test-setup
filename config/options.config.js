@@ -8,7 +8,6 @@ var projectConfig = defaults.userDefault;
 try {
 	projectConfig = require('../project.config');
 } catch (e) {
-	console.log ("No Config, using empty objects");
 }
 
 // merge with defaults
