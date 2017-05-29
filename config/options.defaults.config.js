@@ -8,11 +8,11 @@ var classNameFormatter = helper.ConfigHelper.junitReporter.classNameFormatter;
 var generateCoverageReporterConfig = helper.ConfigHelper.generateCoverageReporterConfig;
 
 module.exports.userDefault = { 
-	projectTitle: '', 
+	projectTitle: 'Default Title', 
 	karma:{}, 
 	eslint:{}, 
 	reportsPaths:{ eslint: {}, reportsPaths: {}, karma: {}}, 
-	jenkins: {}
+	jenkins: {rocketchatChannel: 'jenkins-test', email: 'nope'}
 }
 
 module.exports.reportsPaths = {
