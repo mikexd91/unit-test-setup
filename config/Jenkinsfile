@@ -20,7 +20,7 @@ pipeline {
 		stage ("NPM Calls") {
 			steps {
 				parallel {
-					populateData {
+					populateData: {
 						script {
 							var data = sh (
 								script: 'npm run jenkins',
@@ -33,17 +33,17 @@ pipeline {
 							eslintPath = data[6];
 							rocketchatChannel = data[7];
 						}
-					}
+					},
 
-					unitTest {
+					unitTest: {
 						try {
 							sh 'npm run test';
 						} catch (e) {
 							console.log ("Test complete with failures");
 						}
-					}
+					},
 
-					checkstyle {
+					checkstyle: {
 						sh 'npm run eslint'
 					}
 				} 
@@ -52,14 +52,16 @@ pipeline {
 
 		stage ("Record Results") {
 			steps {
-				parallel {
+				parallel: {
 					junit {
 						junit junitPath
-					}
-					coverage {
+					},
+
+					coverage: {
 						step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: coveragePath, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
 					}
-					checkstyle {
+
+					checkstyle: {
 						checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: eslintPath, unHealthy: '';
 					}
 				}
