@@ -36,10 +36,12 @@ pipeline {
 					},
 
 					unitTest: {
-						try {
-							sh 'npm run test';
-						} catch (e) {
-							console.log ("Test complete with failures");
+						script {
+							try {
+								sh 'npm run test';
+							} catch (e) {
+								console.log ("Test complete with failures");
+							}
 						}
 					},
 
