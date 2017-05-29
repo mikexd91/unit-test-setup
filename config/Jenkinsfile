@@ -32,6 +32,8 @@ pipeline {
 							coveragePath = data[4];
 							eslintPath = data[5];
 							rocketchatChannel = data[6];
+
+							echo junitPath + " " + coveragePath + " " + eslintPath;
 						}
 					},
 
