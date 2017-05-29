@@ -27,11 +27,11 @@ pipeline {
 								returnStdout: true
 							).trim().split('\n');
 
-							projectTitle = data[3];
-							junitPath = data[4];
-							coveragePath = data[5];
-							eslintPath = data[6];
-							rocketchatChannel = data[7];
+							projectTitle = data[2];
+							junitPath = data[3];
+							coveragePath = data[4];
+							eslintPath = data[5];
+							rocketchatChannel = data[6];
 						}
 					},
 
