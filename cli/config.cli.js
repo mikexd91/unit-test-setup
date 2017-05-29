@@ -1,3 +1,5 @@
+var helper = require("../config/utils/helpers");
+
 function readInput (setup) {
 	var readline = require ('readline');
 	var interface = readline.createInterface({
@@ -6,13 +8,13 @@ function readInput (setup) {
 	});
 	
 
-	require("../config/utils/helpers").ConfigHelper.createNestedQuery (interface, setup.queries) (0, function () {
+	helper.ConfigHelper.createNestedQuery (interface, setup.queries) (0, function () {
 		createProjectConfig(interface, setup.config);
 	});
 }
 
 function createProjectConfig (interface, config) {
-	var ObjectToFileWriter = require("../config/utils/helpers").FileSystemHelper.ObjectToFileWriter;
+	var ObjectToFileWriter = helper.FileSystemHelper.ObjectToFileWriter;
 	var filewriter = new ObjectToFileWriter("./project.config.js");
 	filewriter.write(config, function (err) {
 		if (err) 
@@ -21,6 +23,7 @@ function createProjectConfig (interface, config) {
 	});
 	interface.close();
 }
+
 
 var setup = {
 
@@ -38,16 +41,16 @@ var setup = {
 			callback: function (msg) { setup.config.projectTitle = msg; }
 		},
 		{ 
-			question: "Channel", 
+			question: "Rocketchat Channel:", 
 			callback: function (msg) { setup.config.jenkins.rocketchatChannel = msg; } 
 		},
 		{
-			question: "Email",
+			question: "Email:",
 			callback: function (msg) { setup.config.jenkins.email = msg; }
 		},
 		{
-			question: "Git repo",
-			callback: function (msg) { console.log ("git remote add " + msg + "\n"); }
+			question: "Project Git repo:",
+			callback: function (msg) { helper.setGitRemoteURL(msg); }
 		}
 	]
 }

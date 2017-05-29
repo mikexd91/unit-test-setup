@@ -80,6 +80,18 @@ module.exports.merge = function (original, newer) {
 	return original;
 }
 
+module.exports.setGitRemoteURL = function (url) {
+	var exec = require ("child_process").exec;
+	exec ("git remote set-url origin " + url, function (error, stdout, stderr) {
+		if (!error) {
+			console.log (stdout);
+			console.log ("Changed git remote url to: " + url);
+		} else {
+			console.log (stderr);
+		}
+	});
+}
+
 module.exports.ConfigHelper = require ("./Config.helper");
 module.exports.FileSystemHelper = require ("./FileSystem.helper");
 module.exports.ESLintCLIHelper = require ("./ESLintCLI.helper");
