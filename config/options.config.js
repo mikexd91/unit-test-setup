@@ -4,7 +4,7 @@ var preprocess = helper.ConfigHelper.preprocess_paths;
 var merge = helper.merge;
 
 // load user's definition of project config
-var projectConfig = {reportsPath: {}, eslint: {}, karma: {}};
+var projectConfig = defaults.userDefault;
 try {
 	projectConfig = require('../project.config');
 } catch (e) {
@@ -21,6 +21,7 @@ var karma = merge(defaults.karma.preprocess(defaults.karma, reportsPaths), proje
 var jenkins = merge(defaults.jenkins, projectConfig.jenkins);
 
 // exports 
+module.exports.projectTitle = (projectConfig.projectTitle == null) ? "" : projectConfig.projectTitle;
 module.exports.reportsPaths = reportsPaths;
 module.exports.eslint = eslint;
 module.exports.karma = karma;

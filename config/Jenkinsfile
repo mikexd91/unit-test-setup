@@ -3,6 +3,26 @@ def coveragePath = '';
 def eslintPath = '';
 def rocketchatChannel = '';
 
+def datas = [];
+
+def getProjectTitle () { return datas[0]; }
+def getJUnitPath () { return datas[1]; }
+def getCoveragePath () { return datas[2]; }
+def getESLintPath () { return datas[3]; }
+def getRocketchatChannel () { return datas[4]; }
+
+def recordJUnit () {
+	junit getJUnitPath()
+}
+
+def recordCoverage () {
+	step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: getCoveragePath(), failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
+}
+
+def recordCheckstyle () {
+	checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: getESLintPath(), unHealthy: '';
+}
+
 pipeline {
 	agent any
 
@@ -25,10 +45,7 @@ pipeline {
 	        			returnStdout: true //save console output to variable
 	        		).trim().split("\n");
 
-	        		junitPath = variables[3]; 
-	        		coveragePath = variables[4]; 
-	        		eslintPath = variables[5]; 
-	        		rocketchatChannel = variables[6];
+	        		datas = variables[3..7]
 	        	}
 			}
 		}
@@ -56,10 +73,10 @@ pipeline {
 							} finally {
 
 								// Jenkins plugin to record test reports
-								junit junitPath; 
+								recordJUnit();
 
 								// Jenkins plugin to record code coverage reports
-								step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: coveragePath, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
+								recordCoverage();
 
 							}
 						}
@@ -78,7 +95,7 @@ pipeline {
 							} finally {
 
 								// Jenkins plugin to record checkstyle reports
-								checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: eslintPath, unHealthy: '';
+								recordCheckstyle();
 
 							}
 						}
@@ -101,20 +118,10 @@ pipeline {
 	        			returnStdout: true //save console output to variable
 	        		); 
 
-	        		// execute js file to get rocketchat channel
-	        		// stores result in ROCKETCHAT_CHANNEL
-	        		// def ROCKETCHAT_CHANNEL = sh (
-	        		// 	script: "npm run rocketchat:getChannel", //process json into readable format
-	        		//	returnStdout: true //save console output to variable
-	        		// ); 
-
-	        		echo rocketchatChannel;
 	        		def ROCKETCHAT_CHANNEL = "jenkins-tests";
 	        		// Jenkins plugin to send message to Rocketchat
 	        		// TODO: make channel a variable
 	        		// rocketSend channel: ROCKETCHAT_CHANNEL, message: TEST_RESULT, rawMessage: true;
-
-	        		println TEST_RESULT
 				}
 			}
 		}

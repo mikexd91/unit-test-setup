@@ -110,24 +110,25 @@ ConfigHelper.loadKarmaReporterOptions = function (karma, karmaOptions) {
     }
 }
 
-ConfigHelper.createNestedQuery = function (interface, queries) {
-	function query (msg, callback) {
-		interface.question(msg, function (input) {
-			interface.write ("\n");
-			callback(input);
-		});
-	}
-	function nestedQuery (i, callback) {
-		if (i >= queries.length) 
-			callback();
-		else {
-			query (queries[i].question + "\n", function (msg) {
-				queries[i].callback(msg);
-				nestedQuery (i + 1, callback);
-			})
+ConfigHelper.setGitRemoteURL = function (url) {
+	var exec = require ("child_process").exec;
+	// remove exisitng .git
+	// init empty .git 
+	// set remote origin
+	exec ("rmdir .git /s /q && " + 
+		  "git init && " +
+		  "git remote add origin " + url, function (error, stdout, stderr) {
+		if (!error) {
+			console.log (stdout);
+			console.log ("Changed git remote url to: " + url);
+		} else {
+			console.log (stderr);
 		}
-	}
-	return nestedQuery;
+	});
+}
+
+ConfigHelper.isValidGitRepo = function (url) {
+	return false;
 }
 
 module.exports = ConfigHelper;

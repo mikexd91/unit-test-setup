@@ -7,6 +7,14 @@ var nameFormatter = helper.ConfigHelper.junitReporter.nameFormatter;
 var classNameFormatter = helper.ConfigHelper.junitReporter.classNameFormatter;
 var generateCoverageReporterConfig = helper.ConfigHelper.generateCoverageReporterConfig;
 
+module.exports.userDefault = { 
+	projectTitle: '', 
+	karma:{}, 
+	eslint:{}, 
+	reportsPaths:{ eslint: {}, reportsPaths: {}, karma: {}}, 
+	jenkins: {}
+}
+
 module.exports.reportsPaths = {
 	// String: the base of the directory where the reports will go
 	// relative to karma.base

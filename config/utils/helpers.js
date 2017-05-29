@@ -80,21 +80,8 @@ module.exports.merge = function (original, newer) {
 	return original;
 }
 
-module.exports.setGitRemoteURL = function (url) {
-	var exec = require ("child_process").exec;
-	exec ("rmdir .git /s /q && " + 
-		  "git init && " +
-		  "git remote add origin " + url, function (error, stdout, stderr) {
-		if (!error) {
-			console.log (stdout);
-			console.log ("Changed git remote url to: " + url);
-		} else {
-			console.log (stderr);
-		}
-	});
-}
-
 module.exports.ConfigHelper = require ("./Config.helper");
+module.exports.ConfigGeneratorHelper = require ("./ConfigGenerator.helper");
 module.exports.FileSystemHelper = require ("./FileSystem.helper");
 module.exports.ESLintCLIHelper = require ("./ESLintCLI.helper");
 module.exports.RocketchatHelper = require ("./Rocketchat.helper");
