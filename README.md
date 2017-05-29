@@ -2,6 +2,10 @@
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio nec facilisis sodales. Curabitur sed est hendrerit, rutrum justo ut, consectetur odio.
 
+# Pre-requisite 
+- [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [`node & npm`](https://nodejs.org/en/download/)
+
 # Quick Start
 ## Installation
 1. Clone from git

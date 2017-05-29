@@ -11,8 +11,7 @@ var setup = {
 	queries: [
 		query (
 			"Project Title",
-			function (msg) { setup.config.projectTitle = msg; },
-			false
+			function (msg) { setup.config.projectTitle = msg; }
 		),
 		query (
 			"Rocketchat Channel:", 

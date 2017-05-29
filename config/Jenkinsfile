@@ -22,22 +22,27 @@ pipeline {
 				parallel (
 					populateData: {
 						script {
+
+							// split by new line and store output 
+							// into data variable
 							def data = sh (
 								script: 'npm run jenkins -s',
 								returnStdout: true
 							).trim().split('\n');
 
+							// populate variable
 							junitPath = data[0];
 							coveragePath = data[1];
 							eslintPath = data[2];
 							rocketchatChannel = data[3];
 
-							
+							// run eslint
 							try {
 								sh 'npm run eslint';
 							} catch (e) {
 								console.log ("Eslint ran into errors");
 							} finally {
+								// record result
 								checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: eslintPath, unHealthy: '';
 							}
 						}
@@ -46,6 +51,7 @@ pipeline {
 					unitTest: {
 						script {
 							try {
+								// run unit test
 								sh 'npm run test -s';
 							} catch (e) {
 								console.log ("Test complete with failures");
@@ -60,20 +66,24 @@ pipeline {
 			steps {
 				parallel (
 					junit: {
+						// record junit report
 						junit junitPath;
 					},
 
 					coverage: {
+						// record coverage report
 						step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: coveragePath, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
 					},
 
 					rocketchat: {
 						script {
+							// store nicely formatted string into testResult variable
 							def testResult = sh (
 			        			script: "npm run rocketchat -s", //process json into readable format
 			        			returnStdout: true //save console output to variable
 			        		); 
 
+			        		// send testResult variable to rocketchat
 			        		rocketSend channel: rocketchatChannel, message: testResult, rawMessage: true;
 						}
 					}

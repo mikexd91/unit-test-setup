@@ -55,7 +55,6 @@ function readFileComplete (helper, processor) {
 }
 function processData(helper, processor, data) {
 	helper.printObject(processor(data))
-
 }
 
 Rocketchat(process.argv[2]);

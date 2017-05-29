@@ -1,53 +1,68 @@
 var ConfigGenerator = {}
 
+ConfigGenerator.getErrorString = function (err) {
+	switch (err) {
+		case 1: return "SUCCESS";
+		case 2: return "Value cannot be empty";
+		case 3: return "Invalid input type: ";
+		default: return "Unknown Error"
+	}
+}
+
+ConfigGenerator.makeStatus = function (msg = '', skipOnEmpty = true, validator = null) {
+	var code = 1, errMsg = '';
+	if (!skipOnEmpty && msg.length == 0) {
+		code = 2;
+	} else if (validator != null) {
+		errMsg = validator(msg);
+		if (errMsg != null)
+			code = 3;
+		else errMsg = '';
+	} 
+
+	return { code: code, msg: ConfigGenerator.getErrorString(code) + errMsg};
+}
+
 ConfigGenerator.createNestedQuery = function (interface, queries) {
 	function query (msg, callback) {
-		interface.question(msg, function (input) {
+		interface.question(">> " + msg + "\n", function (input) {
 			interface.write ("\n");
 			callback(input);
 		});
 	}
-	function getError (isEnd, isTooManyTries) {
-		if (isEnd) return 1;
-		if (isTooManyTries) return 2;
-	}
-	function nestedQuery (i, callback, tries = 0) {
-		var error = getError(i >= queries.length, tries > 2);
-		if (error > 0) 
-			callback(error);
-		else {
-			query (queries[i].question + "\n", function (msg) {
-				var returnCode = queries[i].callback(msg);
-				if (returnCode == 1) {
-					nestedQuery (i + 1, callback);
-				} else {
-					nestedQuery (i, callback, tries + 1);
-				}
-			})
+	function nestedQuery (i, callback, status = ConfigGenerator.makeStatus(), tries = 0) {
+		if (i >= queries.length) 
+			callback(status);
+		else if (tries > 2) {
+			console.log ("Too many tries moving on...\n");
+			nestedQuery (i + 1, callback);
+		} else if (status.code > 1) {
+			console.log ("!! Error: " + status.msg + "\n");
+			nestedQuery (i - 1, callback, ConfigGenerator.makeStatus(), tries + 1);
+		} else {
+			query (queries[i].question, function (msg) {
+				var returnStatus = queries[i].callback(msg);
+				nestedQuery (i + 1, callback, returnStatus, tries);
+			});
 		}
 	}
 	return nestedQuery;
 }
 
-ConfigGenerator.skipOnEmpty = function (callback) {
-	return function (msg) {
-		if (msg.length > 0)
-			return callback(msg);
-		return 1;
-	}
-}
-
-ConfigGenerator.query = function (question, callback, skipOnEmpty = true) {
-	return {
+ConfigGenerator.query = function (question, callback, skipOnEmpty = true, validator = null) {
+	var obj = {
 		question: question,
 		callback: function (msg) { 
-			var err = 2;
-			if (msg.length > 0 ||
-				(skipOnEmpty && msg.length == 0))
-				err = callback(msg); 
-			return err ? err : 1; 
-		}
+			var status = ConfigGenerator.makeStatus(msg, skipOnEmpty, validator);
+			if (status.code > 1)
+				return status;
+
+			callback(msg);
+			return status;
+		},
+		validator: validator
 	}
+	return obj;
 }
 
 
@@ -58,7 +73,7 @@ ConfigGenerator.createProjectConfig = function (interface, config, status) {
 		if (err) 
 			return console.log (err);
 
-		var msg = (status > 1) ? "Config file created with Error" : "Config file created";
+		var msg = (status.code > 1) ? "Config file created with Error" : "Config file created";
 		console.log (msg);
 	});
 	interface.close();
