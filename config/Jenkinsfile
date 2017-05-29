@@ -69,12 +69,14 @@ pipeline {
 					},
 
 					rocketchat: {
-						def testResult = sh (
-		        			script: "npm run rocketchat", //process json into readable format
-		        			returnStdout: true //save console output to variable
-		        		); 
+						script {
+							def testResult = sh (
+			        			script: "npm run rocketchat", //process json into readable format
+			        			returnStdout: true //save console output to variable
+			        		); 
 
-		        		rocketSend channel: rocketchatChannel, message: testResult, rawMessage: true;
+			        		rocketSend channel: rocketchatChannel, message: testResult, rawMessage: true;
+						}
 					}
 				)
 			}
