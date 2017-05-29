@@ -1,27 +1,8 @@
-def junitPath = '';
-def coveragePath = '';
-def eslintPath = '';
-def rocketchatChannel = '';
-
-def datas = [];
-
-def getProjectTitle () { return datas[0]; }
-def getJUnitPath () { return datas[1]; }
-def getCoveragePath () { return datas[2]; }
-def getESLintPath () { return datas[3]; }
-def getRocketchatChannel () { return datas[4]; }
-
-def recordJUnit () {
-	junit getJUnitPath()
-}
-
-def recordCoverage () {
-	step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: getCoveragePath(), failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
-}
-
-def recordCheckstyle () {
-	checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: getESLintPath(), unHealthy: '';
-}
+def projectTitle;
+def junitPath;
+def coveragePath;
+def eslintPath;
+def rocketchatChannel;
 
 pipeline {
 	agent any
@@ -36,96 +17,55 @@ pipeline {
 			}
 		}
 
-		stage ("read variables") {
+		stage ("NPM Calls") {
 			steps {
-				script {
-
-					def variables = sh (
-	        			script: "npm run jenkins", //process json into readable format
-	        			returnStdout: true //save console output to variable
-	        		).trim().split("\n");
-
-	        		datas = variables[3..7]
-	        	}
-			}
-		}
-
-		stage ("Tests") {
-			// perform all the test in parallel
-			steps {
-				parallel (
-
-					// execute Karma
-					karma: {
+				parallel {
+					populateData {
 						script {
-							try {
-								//sh 'npm run test --silent'; 
-								echo "Run Test";
-							} catch (err) {
+							var data = sh (
+								script: 'npm run jenkins',
+								returnStdout: true
+							).trim().split('\n');
 
-								echo "Karma Test Failed";
-
-								// If there are failed test case
-								// set currentBuild.result to "FAILURE" 
-								// to prevent other build steps
-
-								currentBuild.result = 'FAILURE';
-
-							} finally {
-
-								// Jenkins plugin to record test reports
-								recordJUnit();
-
-								// Jenkins plugin to record code coverage reports
-								recordCoverage();
-
-							}
+							projectTitle = data[3];
+							junitPath = data[4];
+							coveragePath = data[5];
+							eslintPath = data[6];
+							rocketchatChannel = data[7];
 						}
 					},
 
-					//execute eslint
-					eslint: {
-						script {
-							try {
-								sh 'npm run eslint';
-							} catch (err) {
-
-								// TODO: Figure out what errors there might be
-								echo err;
-
-							} finally {
-
-								// Jenkins plugin to record checkstyle reports
-								recordCheckstyle();
-
-							}
+					unitTest {
+						try {
+							sh 'npm run test';
+						} catch (e) {
+							console.log ("Test complete with failures");
 						}
-						
-					}
+					},
 
-				)
+					checkstyle {
+						sh 'npm run eslint'
+					}
+				} 
 			}
 		}
 
-		stage ("report") {
+		stage ("Record Results") {
 			steps {
-
-				script {
-
-					// execute js file to generate Rocketchat friendly text 
-					// stores result in TEST_RESULT
-					def TEST_RESULT = sh (
-	        			script: "npm run rocketchat", //process json into readable format
-	        			returnStdout: true //save console output to variable
-	        		); 
-
-	        		def ROCKETCHAT_CHANNEL = "jenkins-tests";
-	        		// Jenkins plugin to send message to Rocketchat
-	        		// TODO: make channel a variable
-	        		// rocketSend channel: ROCKETCHAT_CHANNEL, message: TEST_RESULT, rawMessage: true;
+				parallel {
+					junit {
+						junit junitPath
+					},
+					coverage {
+						step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: coveragePath, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
+					},
+					checkstyle {
+						checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: eslintPath, unHealthy: '';
+					}
 				}
 			}
 		}
+
 	}
 
 	// post stage
