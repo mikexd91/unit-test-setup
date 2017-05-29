@@ -12,7 +12,7 @@ module.exports.userDefault = {
 	karma:{}, 
 	eslint:{}, 
 	reportsPaths:{ eslint: {}, reportsPaths: {}, karma: {}}, 
-	jenkins: {rocketchatChannel: 'jenkins-test', email: 'nope'}
+	jenkins: {rocketchatChannel: 'jenkins-tests', email: 'nope'}
 }
 
 module.exports.reportsPaths = {
