@@ -53,7 +53,7 @@ pipeline {
 		stage ("Record Results") {
 			steps {
 				parallel: (
-					junit {
+					junit: {
 						junit junitPath
 					},
 
