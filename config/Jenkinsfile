@@ -23,7 +23,7 @@ pipeline {
 					populateData: {
 						script {
 							def data = sh (
-								script: 'npm run jenkins',
+								script: 'npm run jenkins -s',
 								returnStdout: true
 							).trim().split('\n');
 
@@ -46,7 +46,7 @@ pipeline {
 					unitTest: {
 						script {
 							try {
-								sh 'npm run test';
+								sh 'npm run test -s';
 							} catch (e) {
 								console.log ("Test complete with failures");
 							}
@@ -70,7 +70,7 @@ pipeline {
 					rocketchat: {
 						script {
 							def testResult = sh (
-			        			script: "npm run rocketchat", //process json into readable format
+			        			script: "npm run rocketchat -s", //process json into readable format
 			        			returnStdout: true //save console output to variable
 			        		); 
 

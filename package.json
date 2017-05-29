@@ -6,8 +6,8 @@
   "scripts": {
     "eslint": "node cli/eslint.cli.js",
     "test": "karma start ./config/karma.config.js",
-    "jenkins": "node cli/jenkins.cli.js VARIABLES -s",
-    "rocketchat": "node cli/jenkins.cli.js ROCKETCHAT -s",
+    "jenkins": "node cli/jenkins.cli.js VARIABLES",
+    "rocketchat": "node cli/jenkins.cli.js ROCKETCHAT",
     "config": "node cli/config.cli.js",
     "setup": "node cli/config.cli.js && npm install"
   },
