@@ -33,7 +33,7 @@ pipeline {
 							eslintPath = data[6];
 							rocketchatChannel = data[7];
 						}
-					},
+					}
 
 					unitTest: {
 						try {
@@ -41,7 +41,7 @@ pipeline {
 						} catch (e) {
 							console.log ("Test complete with failures");
 						}
-					},
+					}
 
 					checkstyle: {
 						sh 'npm run eslint'
@@ -55,7 +55,7 @@ pipeline {
 				parallel: (
 					junit {
 						junit junitPath
-					},
+					}
 
 					coverage: {
 						step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: coveragePath, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
