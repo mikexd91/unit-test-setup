@@ -8,6 +8,7 @@
     "test": "karma start ./config/karma.config.js",
     "jenkins": "node cli/jenkins.cli.js VARIABLES",
     "rocketchat": "node cli/jenkins.cli.js ROCKETCHAT",
+    "config": "node cli/config.cli.js",
     "setup": "node cli/config.cli.js && npm install"
   },
   "author": "",

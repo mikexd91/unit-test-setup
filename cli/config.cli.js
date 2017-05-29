@@ -50,7 +50,9 @@ var setup = {
 		},
 		{
 			question: "Project Git repo:",
-			callback: function (msg) { helper.setGitRemoteURL(msg); }
+			callback: function (msg) { if (msg.length > 0)
+				helper.setGitRemoteURL(msg); 
+			}
 		}
 	]
 }
