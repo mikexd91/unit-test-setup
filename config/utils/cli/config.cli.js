@@ -1,8 +1,8 @@
-var helper = require("../config/utils/helpers");
+var helper = require("../functions/helpers");
 var query = helper.ConfigGeneratorHelper.query;
 var readInput = helper.ConfigGeneratorHelper.readInput;
 
-var userDefault = require ("../config/options.defaults.config").userDefault;
+var userDefault = require ("../../options.defaults.config").userDefault;
 
 var setup = {
 

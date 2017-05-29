@@ -9,7 +9,7 @@ function executeMandatory (callback) {
 		// require all test cases in the mandatory folder
 		// and run the tests
 
-		var ctx = require.context('./mandatory', true, /\.test\.js$/);
+		var ctx = require.context('../../app/test/rules/_mandatory', true, /\.test\.js$/);
 		ctx.keys().forEach(ctx);
 		
 		// a flag to prevent non-mandatory test to call this 
@@ -36,7 +36,7 @@ function executeMandatory (callback) {
 
 function executeOpen () {
 	describe ("Open", function () {
-		var ctx = require.context("/", true, /\.test\.js$/);
+		var ctx = require.context("../../app/test/rules/", true, /(?!_mandatory\b)\b\w+\/\w+\.test\.js/g);
 		ctx.keys().forEach(ctx);
 	});
 }

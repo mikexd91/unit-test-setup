@@ -1,12 +1,12 @@
-var defaults = require ('./options.defaults.config');
-var helper = require ('./utils/helpers' );
+var defaults = require ('../options.defaults.config');
+var helper = require ('./functions/helpers' );
 var preprocess = helper.ConfigHelper.preprocess_paths;
 var merge = helper.merge;
 
 // load user's definition of project config
 var projectConfig = defaults.userDefault;
 try {
-	projectConfig = require('../project.config');
+	projectConfig = require('../../project.config');
 } catch (e) {
 }
 

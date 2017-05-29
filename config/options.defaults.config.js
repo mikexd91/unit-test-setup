@@ -1,4 +1,4 @@
-var helper = require ("./utils/helpers");
+var helper = require ("./utils/functions/helpers");
 var processEslint = helper.RocketchatHelper.processEslint;
 var processUnitTest = helper.RocketchatHelper.processUnitTest;
 var loadKarmaReporterOptions = helper.ConfigHelper.loadKarmaReporterOptions;
@@ -99,14 +99,14 @@ module.exports.karma = {
 
 	// String: path to test's entry file relative to base
 	// 		define more file in karma.config.js
-	files: './test/index.test.js',
+	files: '../config/utils/index.test.js',
 
 	// Array(String): a list of preprocessor for test's entry file ONLY
 	// 		define more preprocessors for other files in karma.config.js
 	filePreprocessor:  ['webpack', 'coverage'],
 
 	// String: path to webpack config relative to karma.config.js
-	webpack: './webpack.config.js', 
+	webpack: '../webpack.config.js', 
 
 	// Number: port number for karma server to run on
 	port: 9876,

@@ -74,7 +74,7 @@ ConfigGenerator.createProjectConfig = function (interface, config, status) {
 			return console.log (err);
 
 		var msg = (status.code > 1) ? "Config file created with Error" : "Config file created";
-		console.log (msg);
+		console.log (msg + "\n");
 	});
 	interface.close();
 }
@@ -94,11 +94,12 @@ ConfigGenerator.readInput = function (setup) {
 
 ConfigGenerator.setGitRemoteURL = function (url) {
 	var exec = require ("child_process").exec;
+	var fs = require ("fs");
 	// remove exisitng .git
 	// init empty .git 
 	// set remote origin
-	exec ("rmdir .git /s /q && " + 
-		  "git init && " +
+	fs.rmdirSync('./.git');
+	exec ("git init && " +
 		  "git remote add origin " + url, function (error, stdout, stderr) {
 		if (!error) {
 			console.log (stdout);

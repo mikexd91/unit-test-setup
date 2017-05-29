@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Wed May 17 2017 15:18:10 GMT+0800 (Malay Peninsula Standard Time)
-var options = require('./options.config');
+var options = require('./utils/options.config');
 
 // karma's
 var karmaOptions = options.karma;

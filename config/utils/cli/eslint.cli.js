@@ -1,8 +1,8 @@
 var fs = require('fs'); // node file system
 var path = require ('path');
-var helpers = require ('../config/utils/helpers');
-var eslintOptions = require ('../config/options.config.js').eslint;
-var reportsPath = require ('../config/options.config.js').reportsPaths;
+var helpers = require ('../functions/helpers');
+var eslintOptions = require ('../options.config.js').eslint;
+var reportsPath = require ('../options.config.js').reportsPaths;
 var CLIEngine = require ('eslint').CLIEngine;
 
 // config for reports to be generated

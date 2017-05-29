@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2017-05-29T06:37:52" id="0" hostname="WSSIN2HHG8YZ1" tests="2" errors="0" failures="0" time="0.002">
+<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2017-05-29T10:31:13" id="0" hostname="WSSIN2HHG8YZ1" tests="2" errors="0" failures="0" time="0.002">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>

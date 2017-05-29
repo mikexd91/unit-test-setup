@@ -1,5 +1,5 @@
 var path = require('path');
-var options = require ('../config/options.config.js');
+var options = require ('../options.config.js');
 var filePaths = options.reportsPaths;
 
 function Rocketchat (args) {
@@ -31,7 +31,7 @@ function sendChannelName () {
 
 function sendReportSummary () {
 
-	var helper = require('../config/utils/helpers');
+	var helper = require('../functionshelpers');
 
 	var appPath = "../app/";
 	for (var type in filePaths.types) {
