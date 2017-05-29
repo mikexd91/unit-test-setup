@@ -11,14 +11,10 @@ function Rocketchat (args) {
 }
 
 function sendPaths () {
-	sendProjectName();
 	sendJUnitPath();
 	sendCoveragePath();
 	sendESLintPath();
 	sendChannelName();
-}
-function sendProjectName() {
-	console.log(options.projectTitle);
 }
 function sendJUnitPath () {
 	console.log(path.join(options.eslint.pathToApp, filePaths.types.unitTest.outputFile.junit));
