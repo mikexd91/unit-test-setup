@@ -22,7 +22,7 @@ pipeline {
 				parallel (
 					populateData: {
 						script {
-							var data = sh (
+							def data = sh (
 								script: 'npm run jenkins',
 								returnStdout: true
 							).trim().split('\n');
