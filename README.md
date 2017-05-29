@@ -14,7 +14,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
         - `cd ./your/project/folder`
     - Execute `git init`
     - Lastly, clone project repository by executing:
-        - `git clone <PROJECT GIT URL>`
+        - `git clone <PROJECT GIT URL> .`
 
 2. Run Setup 
     - simply execute `npm install`

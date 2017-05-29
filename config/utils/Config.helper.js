@@ -110,25 +110,4 @@ ConfigHelper.loadKarmaReporterOptions = function (karma, karmaOptions) {
     }
 }
 
-ConfigHelper.setGitRemoteURL = function (url) {
-	var exec = require ("child_process").exec;
-	// remove exisitng .git
-	// init empty .git 
-	// set remote origin
-	exec ("rmdir .git /s /q && " + 
-		  "git init && " +
-		  "git remote add origin " + url, function (error, stdout, stderr) {
-		if (!error) {
-			console.log (stdout);
-			console.log ("Changed git remote url to: " + url);
-		} else {
-			console.log (stderr);
-		}
-	});
-}
-
-ConfigHelper.isValidGitRepo = function (url) {
-	return false;
-}
-
 module.exports = ConfigHelper;
