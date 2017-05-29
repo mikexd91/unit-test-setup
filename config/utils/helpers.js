@@ -83,5 +83,5 @@ module.exports.merge = function (original, newer) {
 module.exports.ConfigHelper = require ("./Config.helper");
 module.exports.ConfigGeneratorHelper = require ("./ConfigGenerator.helper");
 module.exports.FileSystemHelper = require ("./FileSystem.helper");
-module.exports.ESLintCLIHelper = require ("./EsLintCLI.helper");
+module.exports.ESLintCLIHelper = require ("./EslintCLI.helper");
 module.exports.RocketchatHelper = require ("./Rocketchat.helper");
