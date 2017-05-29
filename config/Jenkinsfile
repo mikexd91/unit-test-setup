@@ -33,7 +33,14 @@ pipeline {
 							eslintPath = data[6];
 							rocketchatChannel = data[7];
 
-							echo junitPath + " " + coveragePath + " " + eslintPath + " " + rocketchatChannel;
+							
+							try {
+								sh 'npm run eslint';
+							} catch (e) {
+								console.log ("Eslint ran into errors");
+							} finally {
+								checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: eslintPath, unHealthy: '';
+							}
 						}
 					},
 
@@ -45,10 +52,6 @@ pipeline {
 								console.log ("Test complete with failures");
 							}
 						}
-					},
-
-					checkstyle: {
-						sh 'npm run eslint'
 					}
 				) 
 			}
@@ -65,8 +68,13 @@ pipeline {
 						step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: coveragePath, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]);
 					},
 
-					checkstyle: {
-						checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: eslintPath, unHealthy: '';
+					rocketchat: {
+						def testResult = sh (
+		        			script: "npm run rocketchat", //process json into readable format
+		        			returnStdout: true //save console output to variable
+		        		); 
+
+		        		rocketSend channel: rocketchatChannel, message: testResult, rawMessage: true;
 					}
 				)
 			}
