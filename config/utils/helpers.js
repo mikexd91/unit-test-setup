@@ -82,7 +82,7 @@ module.exports.merge = function (original, newer) {
 
 module.exports.setGitRemoteURL = function (url) {
 	var exec = require ("child_process").exec;
-	exec ("git remote set-url origin " + url + " && git branch -m jeremiah master", function (error, stdout, stderr) {
+	exec ("git branch -m jeremiah master && git remote set-url origin " + url, function (error, stdout, stderr) {
 		if (!error) {
 			console.log (stdout);
 			console.log ("Changed git remote url to: " + url);
