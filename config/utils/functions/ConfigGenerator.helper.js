@@ -94,7 +94,8 @@ ConfigGenerator.readInput = function (setup) {
 
 ConfigGenerator.gitConfigHandler = function (msg) {
 	ConfigGenerator.removeGitFolder ();
-	if (ConfigGenerator.isValidGitRepo)
+
+	if (ConfigGenerator.isValidGitRepo(msg))
 		ConfigGenerator.setGitRemoteURL (msg);
 }
 
