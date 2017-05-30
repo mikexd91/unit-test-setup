@@ -31,18 +31,17 @@ function sendChannelName () {
 
 function sendReportSummary () {
 
-	var helper = require('../functionshelpers');
+	console.log (options.projectTitle + ":\n");
 
-	var appPath = "../app/";
+	var helper = require('../functions/helpers');
 	for (var type in filePaths.types) {
 		if (filePaths.types[type].rocketchat && 
 			filePaths.types[type].rocketchat.data && 
 			filePaths.types[type].rocketchat.processor) {
 
-			var outputFilePath = path.resolve (
-				__dirname, 
-				appPath + filePaths.types[type].outputFile[filePaths.types[type].rocketchat.data]
-			);
+			var outputFilePath = path.join (
+				options.eslint.pathToApp, 
+				filePaths.types[type].outputFile[filePaths.types[type].rocketchat.data]);
 
 			var processor = filePaths.types[type].rocketchat.processor
 			helper.FileSystemHelper.readFile(outputFilePath, readFileComplete(helper, processor));

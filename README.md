@@ -1,11 +1,9 @@
 # Project Title
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio nec facilisis sodales. Curabitur sed est hendrerit, rutrum justo ut, consectetur odio.
-
 # Pre-requisite 
 - [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [`node & npm`](https://nodejs.org/en/download/)
-
 # Quick Start
 ## Installation
 1. Clone from git
@@ -14,7 +12,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
         - `cd ./your/project/folder`
     - Execute `git init`
     - Lastly, clone project repository by executing:
-        - `git clone <PROJECT GIT URL> .`
+        - `git clone <PROJECT GIT URL>`
 
 2. Run Setup 
     - simply execute `npm install`
@@ -28,29 +26,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 - The tests are carried out in two stage
     - ***Mandatory-Stage:*** 
         - Every test in this stage must pass in order to continue to Src-stage
-        - Tests are stored in `"./mandatory"` folder relative to the **entry file**
+        - Tests are stored in the `"./_mandatory"` folder
     - ***Open-Stage***
         - The rest of the test are then carried out after the Mandatory-Stage
-        - Tests are stored in `"./src"` folder relative to the **entry file** and follows the this format: `<FILENAME>.test.js`
+        - Tests are stored in `"./src"` folder
+    - ***All test files the this format:*** `<FILENAME>.test.js`
 - Directory Tree:  
 
     - ``` 
         i.e.
         |-  /app
+            |-  /dist
             |-  /src 
-                |- actions
-                    |-  Calculator.js
+                |- sample
+                    |-  sample.js
                 
             |-  /test
-                |- /mandatory 
-                    |- /subFolder
-                        |- mandatory_test1.test.js
+                |- /rules
+                    |- /_mandatory 
+                        |- /subFolder
+                            |- mandatory_test1.test.js
+                    |- /sample
+                        |- sample.test.js
                         
-                |- /open
-                    |- /actions
-                        |- Calculator.test.js
-                        
-                |- index.test.js
+                
             
         ```  
   
@@ -60,11 +59,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 - This section consist of 2 individual parts 
     1. Writing First Test Case
     2. Run ESLint against your codes
+    3. CI with Jenkins
 
 #### 1. Writing First Test Case:
 - We will have two files in the following directory: 
     1. `./app/src/actions/Calculator.js`
-    2. `./app/test/open/src/actions/Calculator.test.js`
+    2. `./app/test/rules/actions/Calculator.test.js`
     
 - Proceed to write some code in `Calculator.js`
     - `Calculator.js`
@@ -82,10 +82,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
     ```
 
 - Now write your first test file
-     - `calculator.test.js`
+     - `Calculator.test.js`
      
     ``` javascript
-        // calculator.test.js
+        // Calculator.test.js
         var expect = require ("chai").expect;
         var Calculator = require ('../../../src/actions/Calculator.js');
         describe ("Calculator", function () {
@@ -107,8 +107,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus odio n
 
 - Ensure that you have at least 1 `.js` file in your `./app/src/`
 - Open your terminal and run the following command
-    `npm run eslint`
-- Navigate to `./app/test/reports/` folder for your test reports 
+    > npm run eslint
+- Navigate to ./app/test/reports/ folder for your test reports 
 
 #### 3. Continuous Integration - Jenkins & Rocketchat
 
