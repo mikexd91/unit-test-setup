@@ -23,7 +23,7 @@ var setup = {
 		),
 		query (
 			"Project Git repo:",
-			function (msg) { helper.ConfigGeneratorHelper.setGitRemoteURL(msg); }
+			helper.ConfigGeneratorHelper.gitConfigHandler
 		)
 	]
 }

@@ -92,18 +92,23 @@ ConfigGenerator.readInput = function (setup) {
 	});
 }
 
+ConfigGenerator.gitConfigHandler = function (msg) {
+	ConfigGenerator.removeGitFolder ();
+	if (ConfigGenerator.isValidGitRepo)
+		ConfigGenerator.setGitRemoteURL (msg);
+}
+
+ConfigGenerator.removeGitFolder = function () {
+	var removeDir = require ("./FileSystem.helper").removeDir;
+	removeDir ('./.git');
+}
+
 ConfigGenerator.setGitRemoteURL = function (url) {
 	var exec = require ("child_process").exec;
-	var fs = require ("fs");
-	// remove exisitng .git
-	// init empty .git 
-	// set remote origin
-	fs.rmdirSync('./.git');
 	exec ("git init && " +
 		  "git remote add origin " + url, function (error, stdout, stderr) {
 		if (!error) {
-			console.log (stdout);
-			console.log ("Changed git remote url to: " + url);
+			console.log ("set git remote url to: " + url);
 		} else {
 			console.log (stderr);
 		}
@@ -111,7 +116,7 @@ ConfigGenerator.setGitRemoteURL = function (url) {
 }
 
 ConfigGenerator.isValidGitRepo = function (url) {
-	return false;
+	return url.length > 0
 }
 
 module.exports = ConfigGenerator;

@@ -75,4 +75,32 @@ FileSystemHelper.parseXML = function (data) {
 	}
 }
 
+FileSystemHelper.removeDir = function (dir) {
+	var fs = require ("fs");
+	var path = require ("path");
+
+	try {
+		var files = fs.readdirSync(dir);
+	} catch (e) {
+		if (!FileSystemHelper.dirExist(e)) {
+			console.log ("Directory doesnt exist");
+		} else {
+			console.log (e);
+		}
+	} finally {
+		if (files != null) {
+			files.forEach (function (file, index){
+				var filename = path.join(dir, file);
+				if (fs.statSync(filename).isDirectory()) {
+					FileSystemHelper.removeDir(filename)
+				} else {
+					fs.unlinkSync(filename);
+				}
+			});
+
+			fs.rmdirSync (dir);
+		}
+	}
+}
+
 module.exports = FileSystemHelper;
